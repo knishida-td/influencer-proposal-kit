@@ -1,0 +1,8 @@
+node_modules/
+.venv/
+*.pptx
+*.pdf
+*.jpg
+*.png
+.DS_Store
+node_modules/
