@@ -1,0 +1,142 @@
+{
+  "id": "fragrance-suzuki",
+  "title": "ルームフレグランス",
+  "output": "/tmp/fragrance-proposal-v1.pptx",
+  "imageDir": "/tmp/fragrance-images",
+  "images": {
+    "diffuser": "diffuser.jpg",
+    "candleRoom": "candle-room.jpg",
+    "essentialOil": "essential-oil.jpg",
+    "lavender": "lavender.jpg",
+    "interior": "interior.jpg",
+    "giftBox": "gift-box2.jpg",
+    "bottles": "bottles.jpg"
+  },
+  "badges": {
+    "ifra": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><rect width='300' height='300' rx='20' fill='#1A237E'/><text x='150' y='110' text-anchor='middle' fill='#C5CAE9' font-family='Georgia,serif' font-size='28' font-weight='bold'>IFRA</text><line x1='70' y1='125' x2='230' y2='125' stroke='#7986CB' stroke-width='2'/><text x='150' y='160' text-anchor='middle' fill='#E8EAF6' font-family='Helvetica,Arial' font-size='14'>International Fragrance</text><text x='150' y='185' text-anchor='middle' fill='#E8EAF6' font-family='Helvetica,Arial' font-size='14'>Association</text><text x='150' y='230' text-anchor='middle' fill='#9FA8DA' font-family='Helvetica,Arial' font-size='11'>SAFETY CERTIFIED</text></svg>",
+    "vegan": "<svg width='280' height='280' xmlns='http://www.w3.org/2000/svg'><rect width='280' height='280' rx='140' fill='#1B5E20'/><text x='140' y='110' text-anchor='middle' fill='#E8F5E9' font-family='Helvetica,Arial' font-size='22' font-weight='bold'>VEGAN</text><line x1='70' y1='125' x2='210' y2='125' stroke='#81C784' stroke-width='2'/><text x='140' y='160' text-anchor='middle' fill='#C8E6C9' font-family='Helvetica,Arial' font-size='14'>CRUELTY FREE</text><text x='140' y='200' text-anchor='middle' fill='#A5D6A7' font-family='Helvetica,Arial' font-size='11'>NO ANIMAL TESTING</text></svg>"
+  },
+  "cover": {
+    "leftImg": "diffuser",
+    "rightImg": "interior",
+    "title": "ルーム\nフレグランス"
+  },
+  "concept": {
+    "headline": "「帰りたくなる部屋」を香りで作る",
+    "body": "セレブなライフスタイル発信で支持される亜美さんが、空間の上質さを提案する新ジャンル。",
+    "matchLabel": "鈴木亜美さんとの相性:",
+    "points": [
+      "インテリア発信との親和性。部屋の写真に自然に映る",
+      "着圧ソックス・シャンプーに続くライフスタイル系の新軸",
+      "ギフト需要が高く、フォロワーの購入動機が明確"
+    ],
+    "keyMsg": "セレブ空間 x 天然精油 x ギフト需要"
+  },
+  "overview": {
+    "headline": "「置くだけ」で部屋が変わるリードディフューザー",
+    "leftImg": "diffuser",
+    "rightImg": "essentialOil",
+    "features": [
+      "天然精油100%使用。合成香料不使用",
+      "リードスティックで電気不要。火も不要",
+      "約2ヶ月間持続する長寿命設計",
+      "インテリアに馴染むミニマルデザイン",
+      "有害物質ゼロで子供やペットにも安心",
+      "ギフトボックス付きで贈り物にも最適"
+    ],
+    "keyMsg": "天然精油100%のリードディフューザー"
+  },
+  "materials": {
+    "header": "成分・機能性",
+    "headline": "調香師が監修した天然精油ブレンド",
+    "cards": [
+      { "title": "天然精油100%", "sub": "合成香料不使用", "imgKey": "essentialOil", "desc": "エッセンシャルオイルのみ使用\nラベンダー・ベルガモット等\n自然な香りの奥行きを実現" },
+      { "title": "リードスティック", "sub": "ラタン製", "imgKey": "bottles", "desc": "天然ラタンの吸い上げ式\n電気・火を一切使わない\nスティック本数で香りの強さ調整" },
+      { "title": "ガラスボトル", "sub": "ミニマルデザイン", "imgKey": "candleRoom", "desc": "マットガラスの上品なボトル\nどんなインテリアにも馴染む\nSNS映えするシンプルな佇まい" }
+    ],
+    "keyMsg": "天然精油+ラタンスティック+映えるボトル"
+  },
+  "quality": {
+    "cert1": { "title": "IFRA(国際フレグランス協会)準拠", "body": "国際的な香料の安全基準に準拠\n成分濃度・使用制限を遵守", "badgeKey": "ifra" },
+    "cert2": { "title": "ヴィーガン・クルエルティフリー", "body": "動物実験なし・動物由来成分不使用\n環境にも配慮した処方", "badgeKey": "vegan" },
+    "keyMsg": "国際安全基準+ヴィーガン認証で安心品質"
+  },
+  "comparison": {
+    "headers": ["スペック項目", "本企画", "Aesop", "SHIRO"],
+    "rows": [
+      ["天然精油", "100%", "一部合成", "一部合成"],
+      ["持続期間", "約2ヶ月", "約2ヶ月", "約1.5ヶ月"],
+      ["容量", "200ml", "500ml", "200ml"],
+      ["ギフト対応", "専用BOX付", "別売", "別売"],
+      ["販売価格", "3千~6千円", "1万~1.5万円", "4千~6千円"]
+    ],
+    "keyMsg": "Aesop品質を半額以下、SHIRO同等価格で"
+  },
+  "production": {
+    "headline": "国内フレグランス専門工場で製造",
+    "block1": { "title": "製造工場", "body": "国内のフレグランス専門工場\n大手ブランドのOEM実績あり" },
+    "block2": { "title": "調香師監修", "body": "フランス・グラース研修済みの調香師が監修\n香りのトップ・ミドル・ラストを設計" },
+    "imgKey": "lavender",
+    "callout": "香りのサンプルを事前にお届け可能です",
+    "keyMsg": "調香師監修+国内専門工場で品質を担保"
+  },
+  "design": {
+    "header": "パッケージデザイン",
+    "benchmark": "Aesopをベンチマーク",
+    "imgKey": "diffuser",
+    "specs": [
+      { "text": "マットガラスボトル+木製キャップ", "sub": ["1. 高級感のあるフロスト加工", "2. 天然木の温かみをプラス"] },
+      { "text": "ギフトBOX標準付属", "note": "（そのまま贈り物にできる仕様）" },
+      { "text": "ラベルはミニマルデザインで主張しすぎない" }
+    ],
+    "keyMsg": "マットガラス+ギフトBOXで贈れるデザイン"
+  },
+  "variations": {
+    "header": "香りのラインナップ",
+    "imgKey": "lavender",
+    "summary": "3種の香り展開",
+    "items": [
+      { "label": "ラベンダー&ベルガモット", "detail": "リラックス系。寝室やリビングに" },
+      { "label": "ヒノキ&ユーカリ", "detail": "クリーン系。玄関や洗面所に" },
+      { "label": "ローズ&ゼラニウム", "detail": "華やか系。ドレッサーやクローゼットに" }
+    ],
+    "keyMsg": "リラックス x クリーン x 華やかの3香展開"
+  },
+  "sales": {
+    "headline": "インテリア投稿+ギフト需要で拡販",
+    "strategies": [
+      { "title": "インテリア投稿にディフューザーを配置", "desc": "部屋の写真にさりげなく映り込ませる" },
+      { "title": "「おうち時間ルーティン」Reels", "desc": "帰宅後にスティックを足す動画で香りの良さを訴求" },
+      { "title": "母の日・クリスマスのギフト訴求", "desc": "ギフトBOX標準付属でそのまま贈れる" }
+    ],
+    "topImg": "interior",
+    "bottomImg": "giftBox",
+    "keyMsg": "インテリア投稿+ギフト需要の二軸で展開"
+  },
+  "schedule": {
+    "rows": [
+      ["4月", "企画・調香", "香りの方向性と調香師との打ち合わせ"],
+      ["5月", "試作・香りテスト", "3種の香りサンプル作成"],
+      ["6月", "パッケージデザイン確定", "ボトル・BOXデザイン"],
+      ["7月", "量産", "国内工場で量産開始"],
+      ["9月", "製品納品・検品", "全ロット香り検査"],
+      ["10月", "プロモーション撮影", "亜美さんの自宅インテリア撮影"],
+      ["11月", "リリース", "EC販売+ギフトシーズンに合わせて"]
+    ],
+    "note": "※クリスマスギフト需要に合わせたスケジュール",
+    "keyMsg": "4月企画 → 11月リリースの製造スケジュール"
+  },
+  "projection": {
+    "rows": [
+      ["販売価格", "3,000-6,000円", "香り・容量によって変動"],
+      ["販売時期", "11月", "ギフトシーズンに合わせて"],
+      ["主成分", "天然精油100%", "合成香料不使用"],
+      ["品質", "IFRA準拠+ヴィーガン", "国内専門工場製造"],
+      ["販売戦略", "インテリア投稿+ギフト訴求", "母の日・クリスマス需要"],
+      ["ラインナップ", "3香", "ラベンダー/ヒノキ/ローズ"],
+      ["生産数", "2,000-8,000本", "初回ロット想定"],
+      ["売上想定", "600万-4,800万円", "販売価格3千-6千円で算出"]
+    ],
+    "keyMsg": "売上想定600万〜4,800万円のポテンシャル"
+  }
+}

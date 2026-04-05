@@ -1,0 +1,142 @@
+{
+  "id": "apron-naruse",
+  "title": "親子エプロンセット",
+  "output": "/tmp/apron-proposal-v1.pptx",
+  "imageDir": "/tmp/apron-images",
+  "images": {
+    "momKidCook": "mom-kid-cook.jpg",
+    "kidCooking": "kid-cooking.jpg",
+    "apronKitchen": "apron-kitchen.jpg",
+    "fabricCotton": "fabric-cotton.jpg",
+    "sewing": "sewing.jpg",
+    "familyMeal": "family-meal.jpg",
+    "linenTexture": "linen-texture.jpg"
+  },
+  "badges": {
+    "oekotex": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><rect width='300' height='300' rx='20' fill='#00695C'/><text x='150' y='100' text-anchor='middle' fill='#E0F2F1' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>OEKO-TEX</text><text x='150' y='130' text-anchor='middle' fill='#B2DFDB' font-family='Helvetica,Arial' font-size='14'>Standard 100</text><line x1='70' y1='145' x2='230' y2='145' stroke='#4DB6AC' stroke-width='2'/><text x='150' y='180' text-anchor='middle' fill='#E0F2F1' font-family='Helvetica,Arial' font-size='13'>TESTED FOR</text><text x='150' y='205' text-anchor='middle' fill='#E0F2F1' font-family='Helvetica,Arial' font-size='13'>HARMFUL</text><text x='150' y='230' text-anchor='middle' fill='#E0F2F1' font-family='Helvetica,Arial' font-size='13'>SUBSTANCES</text><text x='150' y='270' text-anchor='middle' fill='#80CBC4' font-family='Helvetica,Arial' font-size='10'>CONFIDENCE IN TEXTILES</text></svg>",
+    "madeInJapan": "<svg width='280' height='280' xmlns='http://www.w3.org/2000/svg'><rect width='280' height='280' rx='140' fill='#B71C1C'/><circle cx='140' cy='110' r='35' fill='#FFFFFF'/><text x='140' y='175' text-anchor='middle' fill='#FFFFFF' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>MADE IN</text><text x='140' y='205' text-anchor='middle' fill='#FFFFFF' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>JAPAN</text><text x='140' y='245' text-anchor='middle' fill='#EF9A9A' font-family='Helvetica,Arial' font-size='10'>QUALITY CRAFTSMANSHIP</text></svg>"
+  },
+  "cover": {
+    "leftImg": "momKidCook",
+    "rightImg": "kidCooking",
+    "title": "親子エプロン\nセット"
+  },
+  "concept": {
+    "headline": "「一緒に作ろう」を始めるエプロン",
+    "body": "栄養士ママが考えた、親子で料理を楽しむための食育エプロンセット。",
+    "matchLabel": "成瀬愛里さんとの相性:",
+    "points": [
+      "栄養士×3児の母。食育への説得力が圧倒的",
+      "料理投稿にエプロン姿の親子を自然に組み込める",
+      "プチプラ価格帯でフォロワーが手を出しやすい"
+    ],
+    "keyMsg": "栄養士ママ x 食育 x 親子おそろいエプロン"
+  },
+  "overview": {
+    "headline": "「食育が始まる」親子おそろいエプロン",
+    "leftImg": "momKidCook",
+    "rightImg": "apronKitchen",
+    "features": [
+      "国産リネンコットン使用。肌に優しい天然素材",
+      "撥水加工で汚れがサッと落ちる",
+      "子供用はマジックテープで着脱簡単",
+      "ママ用はクロスバックで肩が凝らない設計",
+      "ポケット付きでスマホやレシピメモを収納",
+      "洗濯機で丸洗いOK。毎日使える耐久性"
+    ],
+    "keyMsg": "国産リネンコットンの撥水親子エプロン"
+  },
+  "materials": {
+    "header": "素材・機能性",
+    "headline": "子供の肌にも安心な素材を厳選",
+    "cards": [
+      { "title": "国産リネンコットン", "sub": "綿麻混紡", "imgKey": "linenTexture", "desc": "リネン55%+コットン45%\n吸水性と速乾性を両立\n使い込むほど柔らかくなる" },
+      { "title": "撥水加工", "sub": "汚れに強い", "imgKey": "fabricCotton", "desc": "表面に撥水コーティング\n醤油やケチャップも弾く\n洗濯を重ねても効果持続" },
+      { "title": "国内縫製", "sub": "丁寧な仕上げ", "imgKey": "sewing", "desc": "国内の縫製工場で製造\n子供が触れる部分は\nダブルステッチで強度確保" }
+    ],
+    "keyMsg": "国産リネンコットン+撥水+国内縫製"
+  },
+  "quality": {
+    "cert1": { "title": "OEKO-TEX Standard 100認証", "body": "有害物質検査の国際認証\n赤ちゃんの肌に触れても安全な基準をクリア", "badgeKey": "oekotex" },
+    "cert2": { "title": "日本製(MADE IN JAPAN)", "body": "企画・裁断・縫製・検品まで国内一貫生産\n品質管理の行き届いた日本製", "badgeKey": "madeInJapan" },
+    "keyMsg": "OEKO-TEX認証+日本製で子供にも安心"
+  },
+  "comparison": {
+    "headers": ["スペック項目", "本企画", "gelato pique", "MARLMARL"],
+    "rows": [
+      ["素材", "リネンコットン", "コットン100%", "コットン100%"],
+      ["撥水加工", "○", "×", "○"],
+      ["親子セット", "○(標準)", "×(別売)", "×(別売)"],
+      ["日本製", "○", "×", "○"],
+      ["セット価格", "3千~5千円", "ママ5千+子3千円", "ママ5千+子4千円"]
+    ],
+    "keyMsg": "親子セットで半額以下。撥水+日本製"
+  },
+  "production": {
+    "headline": "国内縫製工場で一貫製造",
+    "block1": { "title": "縫製工場", "body": "岡山県の縫製工場\n子供服・ベビー用品の製造実績豊富" },
+    "block2": { "title": "品質検査", "body": "ホルムアルデヒド検査+色落ち検査\n子供用衣類の安全基準を全てクリア" },
+    "imgKey": "sewing",
+    "callout": "サンプル到着後、親子での撮影が可能です",
+    "keyMsg": "岡山の縫製工場で製造。全品検査済み"
+  },
+  "design": {
+    "header": "デザインイメージ",
+    "benchmark": "gelato piqueをベンチマーク",
+    "imgKey": "apronKitchen",
+    "specs": [
+      { "text": "ママ用: クロスバック式で肩紐ズレ防止", "sub": ["1. かぶるだけで着用完了", "2. 結ぶ手間なし、時短設計"] },
+      { "text": "子供用: マジックテープで3秒着脱", "note": "（自分でつけられる→自立心を育む）" },
+      { "text": "親子おそろいのワンポイント刺繍入り" }
+    ],
+    "keyMsg": "クロスバック+マジックテープで時短着脱"
+  },
+  "variations": {
+    "header": "カラー展開",
+    "imgKey": "familyMeal",
+    "summary": "3色展開想定",
+    "items": [
+      { "label": "ナチュラルベージュ", "detail": "リネンの風合いが映える定番色" },
+      { "label": "チャコールグレー", "detail": "汚れが目立ちにくい実用色" },
+      { "label": "ダスティピンク", "detail": "女の子に人気のくすみピンク" }
+    ],
+    "keyMsg": "ベージュ x グレー x ピンクの3色展開"
+  },
+  "sales": {
+    "headline": "料理投稿×食育で認知拡大",
+    "strategies": [
+      { "title": "親子クッキング投稿でエプロン露出", "desc": "子供と一緒に料理する普段の投稿にエプロンを" },
+      { "title": "「3歳からできる食育レシピ」Reels", "desc": "エプロンを着た子供が料理する動画で共感を獲得" },
+      { "title": "購入特典: 食育レシピカード5枚", "desc": "栄養士監修の子供と作れる簡単レシピ" }
+    ],
+    "topImg": "kidCooking",
+    "bottomImg": "familyMeal",
+    "keyMsg": "親子クッキング投稿+食育Reelsで話題化"
+  },
+  "schedule": {
+    "rows": [
+      ["4月", "企画・デザイン確定", "素材・カラー・サイズの決定"],
+      ["5月", "サンプル製作", "岡山工場でサンプル縫製"],
+      ["6月", "サンプル確認・修正", "着用テスト+安全検査"],
+      ["7月", "量産", "量産開始"],
+      ["8月", "製品納品・検品", "全品検査実施"],
+      ["9月", "プロモーション撮影", "成瀬さん親子のクッキング撮影"],
+      ["10月", "リリース", "EC販売+Instagram連動開始"]
+    ],
+    "note": "※秋の食欲シーズン+年末ギフト需要に対応",
+    "keyMsg": "4月企画 → 10月リリースの製造スケジュール"
+  },
+  "projection": {
+    "rows": [
+      ["販売価格", "3,000-5,000円", "セット(ママ+子供)価格"],
+      ["販売時期", "10月", "秋の食欲シーズンに合わせて"],
+      ["素材", "国産リネンコットン", "撥水加工+OEKO-TEX認証"],
+      ["品質", "日本製+全品検査", "岡山の縫製工場で製造"],
+      ["販売戦略", "親子クッキング投稿連動", "32万フォロワーへの露出"],
+      ["カラー展開", "3色", "ベージュ/グレー/ピンク"],
+      ["生産数", "2,000-5,000セット", "初回ロット想定"],
+      ["売上想定", "600万-2,500万円", "セット価格3千-5千円で算出"]
+    ],
+    "keyMsg": "売上想定600万〜2,500万円のポテンシャル"
+  }
+}
