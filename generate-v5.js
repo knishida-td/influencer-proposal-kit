@@ -4,10 +4,8 @@ const fs = require("fs");
 const path = require("path");
 
 // =============================================================
-// Image Utilities
+// Image Utilities (v1と同一)
 // =============================================================
-
-// アスペクト比を維持してmaxW/maxHに収める
 function fitImage(origW, origH, maxW, maxH) {
   const ratio = origW / origH;
   let w = maxW, h = maxW / ratio;
@@ -15,7 +13,6 @@ function fitImage(origW, origH, maxW, maxH) {
   return { w, h };
 }
 
-// ファイルからBase64読み込み + sipsでピクセル取得
 function loadLocalImage(filePath) {
   if (!filePath || !fs.existsSync(filePath)) return null;
   const ext = path.extname(filePath).toLowerCase();
@@ -32,9 +29,8 @@ function getImageDimensions(filePath) {
     const hm = out.match(/pixelHeight:\s*(\d+)/);
     if (wm && hm) return { w: parseInt(wm[1]), h: parseInt(hm[1]) };
   } catch {}
-  return { w: 600, h: 824 }; // fallback
+  return { w: 800, h: 600 };
 }
-
 
 // =============================================================
 // SlideKit Design System
@@ -66,7 +62,7 @@ async function main() {
   const pres = new pptxgen();
   pres.layout = "LAYOUT_16x9";
   pres.author = "提案チーム";
-  pres.title = "高品質ダウンジャケット ご提案資料";
+  pres.title = "オリジナル万能調味料 ご提案資料";
 
   // ── Helpers ──
   function addHeader(s, titleText) {
@@ -124,31 +120,23 @@ async function main() {
     });
   }
 
-  // アスペクト比を維持して配置するヘルパー
-  function addImgFit(s, imgData, dims, x, y, maxW, maxH) {
-    const fit = fitImage(dims.w, dims.h, maxW, maxH);
-    const cx = x + (maxW - fit.w) / 2; // 水平中央
-    const cy = y + (maxH - fit.h) / 2; // 垂直中央
+  function addImgFit(s, imgData, imgDims, x, y, maxW, maxH) {
+    const fit = fitImage(imgDims.w, imgDims.h, maxW, maxH);
+    const cx = x + (maxW - fit.w) / 2;
+    const cy = y + (maxH - fit.h) / 2;
     s.addImage({ data: imgData, x: cx, y: cy, w: fit.w, h: fit.h });
   }
 
   // ── Load images ──
-  const IMG_DIR = "/tmp/proposal-images";
+  const IMG_DIR = "/tmp/seasoning-images";
   const imgFiles = {
-    coverA:   "cover-black.jpg",    // 白ジャケット・カフェ (600x824)
-    coverB:   "cover-white.jpg",    // 白ジャケット・フード (600x824)
-    black:    "product-white.jpg",  // 黒ジャケット着用 (600x824)
-    white:    "product-black.jpg",  // 白ジャケット・買い物 (600x824)
-    blackFull:"detail1.jpg",        // 黒ジャケット全身 (600x824)
-    beltDetail:"fur.jpg",           // ベルトディテール (1000x984)
-    detail2:  "detail2.jpg",        // ディテール (600x824)
-    modelPromo:"model-promo.jpg",   // モデルプロモ (1364x1156)
-    infoPage: "info-detail.jpg",    // 商品詳細ページ (1000x1750)
-    sheepWool:"sheep-wool.jpg",     // 羊毛 (600x906)
-    downFeather:"white-feather-macro.jpg", // ダウン素材マクロ (600x600)
-    downBall:"down-ball2.jpg",      // ダウンボール (600x400)
-    woolTex: "wool-texture.jpg",    // ウール (800x1067)
-    giftBox: "gift-box.jpg",        // ノベルティ (600x899)
+    spiceJars:    "spice-jars.jpg",      // 800x1063 portrait
+    cookingPan:   "cooking-pan.jpg",     // 800x533 landscape
+    spicesTable:  "spices-table.jpg",    // 800x1198 portrait
+    momCooking:   "mom-cooking.jpg",     // 800x534 landscape
+    foodPlate:    "food-plate.jpg",      // 800x533 landscape
+    herbsFresh:   "herbs-fresh.jpg",     // 800x533 landscape
+    kitchenPrep:  "kitchen-prep.jpg",    // 800x534 landscape
   };
 
   const imgs = {};
@@ -162,70 +150,63 @@ async function main() {
     }
   }
 
-  // RDS認証ロゴ（SVG生成）
-  const rdsSvg = `<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
-    <rect width="300" height="300" rx="20" fill="#1565C0"/>
-    <circle cx="150" cy="110" r="60" fill="none" stroke="#ffffff" stroke-width="5"/>
-    <path d="M120,100 Q150,60 180,100 Q150,140 120,100Z" fill="#ffffff" opacity="0.9"/>
-    <text x="150" y="200" text-anchor="middle" fill="#ffffff" font-family="Helvetica,Arial" font-size="36" font-weight="bold">RDS</text>
-    <text x="150" y="235" text-anchor="middle" fill="#B3D4FC" font-family="Helvetica,Arial" font-size="14">Responsible Down</text>
-    <text x="150" y="255" text-anchor="middle" fill="#B3D4FC" font-family="Helvetica,Arial" font-size="14">Standard</text>
-    <text x="150" y="280" text-anchor="middle" fill="#90CAF9" font-family="Helvetica,Arial" font-size="11">CERTIFIED</text>
+  // 国内GMP工場認証 (SVG生成 - industrial blue badge)
+  const gmpSvg = `<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+    <rect width="300" height="300" rx="150" fill="#1B3A5C"/>
+    <circle cx="150" cy="150" r="120" fill="none" stroke="#A8C4E0" stroke-width="4"/>
+    <circle cx="150" cy="150" r="108" fill="none" stroke="#A8C4E0" stroke-width="2"/>
+    <text x="150" y="115" text-anchor="middle" fill="#A8C4E0" font-family="Helvetica,Arial" font-size="22" font-weight="bold">GMP</text>
+    <text x="150" y="145" text-anchor="middle" fill="#E8F0F8" font-family="Helvetica,Arial" font-size="16" font-weight="bold">認定工場</text>
+    <text x="150" y="175" text-anchor="middle" fill="#A8C4E0" font-family="Helvetica,Arial" font-size="12">CERTIFIED</text>
+    <text x="150" y="200" text-anchor="middle" fill="#A8C4E0" font-family="Helvetica,Arial" font-size="11">MANUFACTURING</text>
   </svg>`;
-  const rdsImg = "image/png;base64," + (await sharp(Buffer.from(rdsSvg)).png().toBuffer()).toString("base64");
+  const gmpImg = "image/png;base64," + (await sharp(Buffer.from(gmpSvg)).png().toBuffer()).toString("base64");
 
-  // TC証明書（SVG生成）
-  const tcSvg = `<svg width="240" height="340" xmlns="http://www.w3.org/2000/svg">
-    <rect width="240" height="340" rx="8" fill="#FAFAFA" stroke="#BDBDBD" stroke-width="2"/>
-    <rect x="20" y="20" width="200" height="50" rx="4" fill="#37474F"/>
-    <text x="120" y="52" text-anchor="middle" fill="#ffffff" font-family="Helvetica,Arial" font-size="18" font-weight="bold">TRANSACTION</text>
-    <text x="120" y="88" text-anchor="middle" fill="#37474F" font-family="Helvetica,Arial" font-size="16" font-weight="bold">CERTIFICATE</text>
-    <line x1="40" y1="100" x2="200" y2="100" stroke="#BDBDBD" stroke-width="1"/>
-    <text x="40" y="125" fill="#616161" font-family="Helvetica,Arial" font-size="11">Certificate No:</text>
-    <text x="40" y="145" fill="#212121" font-family="Helvetica,Arial" font-size="12">TC-XXXX-XXXX</text>
-    <text x="40" y="175" fill="#616161" font-family="Helvetica,Arial" font-size="11">Product:</text>
-    <text x="40" y="195" fill="#212121" font-family="Helvetica,Arial" font-size="12">White Duck Down 800FP</text>
-    <text x="40" y="225" fill="#616161" font-family="Helvetica,Arial" font-size="11">Standard:</text>
-    <text x="40" y="245" fill="#212121" font-family="Helvetica,Arial" font-size="12">RDS - Responsible Down</text>
-    <circle cx="120" cy="295" r="25" fill="none" stroke="#1565C0" stroke-width="2"/>
-    <text x="120" y="300" text-anchor="middle" fill="#1565C0" font-family="Helvetica,Arial" font-size="10" font-weight="bold">VERIFIED</text>
+  // 無添加認証 (SVG生成 - green/natural clean mark)
+  const mutenkaSvg = `<svg width="280" height="340" xmlns="http://www.w3.org/2000/svg">
+    <rect width="280" height="340" rx="10" fill="#F0F8F0" stroke="#2E7D32" stroke-width="3"/>
+    <rect x="30" y="25" width="220" height="45" rx="5" fill="#2E7D32"/>
+    <text x="140" y="55" text-anchor="middle" fill="#F0F8F0" font-family="Helvetica,Arial" font-size="18" font-weight="bold">無添加認証</text>
+    <circle cx="140" cy="130" r="45" fill="none" stroke="#4CAF50" stroke-width="3"/>
+    <text x="140" y="125" text-anchor="middle" fill="#2E7D32" font-family="Helvetica,Arial" font-size="28" font-weight="bold">✓</text>
+    <text x="140" y="150" text-anchor="middle" fill="#2E7D32" font-family="Helvetica,Arial" font-size="10">ADDITIVE FREE</text>
+    <line x1="50" y1="190" x2="230" y2="190" stroke="#A5D6A7" stroke-width="1"/>
+    <text x="50" y="215" fill="#2E7D32" font-family="Helvetica,Arial" font-size="11">化学調味料</text>
+    <text x="200" y="215" text-anchor="end" fill="#2E7D32" font-family="Helvetica,Arial" font-size="12" font-weight="bold">不使用</text>
+    <text x="50" y="245" fill="#2E7D32" font-family="Helvetica,Arial" font-size="11">保存料</text>
+    <text x="200" y="245" text-anchor="end" fill="#2E7D32" font-family="Helvetica,Arial" font-size="12" font-weight="bold">不使用</text>
+    <text x="50" y="275" fill="#2E7D32" font-family="Helvetica,Arial" font-size="11">着色料</text>
+    <text x="200" y="275" text-anchor="end" fill="#2E7D32" font-family="Helvetica,Arial" font-size="12" font-weight="bold">不使用</text>
+    <text x="140" y="320" text-anchor="middle" fill="#4CAF50" font-family="Helvetica,Arial" font-size="9">NATURAL INGREDIENTS ONLY</text>
   </svg>`;
-  const tcImg = "image/png;base64," + (await sharp(Buffer.from(tcSvg)).png().toBuffer()).toString("base64");
+  const mutenkaImg = "image/png;base64," + (await sharp(Buffer.from(mutenkaSvg)).png().toBuffer()).toString("base64");
 
   let pg = 0;
 
   // ═══════════════════════════════════════════════
-  // Slide 1: 表紙 — 商品写真2枚 + 中央タイトル
-  // 元PDF: 黒JK左 + 白JK右 + 大タイトル中央
+  // Slide 1: 表紙
   // ═══════════════════════════════════════════════
   {
     const s = pres.addSlide();
     s.background = { color: C.bg };
     const bTop = (SH - 2.8) / 2;
 
-    // 左写真（アスペクト比維持）
-    if (imgs.black) {
-      const fit = fitImage(dims.black.w, dims.black.h, 2.8, 4.5);
-      s.addImage({ data: imgs.black, x: 0.1, y: (SH - fit.h) / 2, w: fit.w, h: fit.h });
+    if (imgs.spiceJars) {
+      const fit = fitImage(dims.spiceJars.w, dims.spiceJars.h, 2.8, 4.8);
+      s.addImage({ data: imgs.spiceJars, x: 0.2, y: (SH - fit.h) / 2, w: fit.w, h: fit.h });
     }
-    // 右写真
-    if (imgs.coverB) {
-      const fit = fitImage(dims.coverB.w, dims.coverB.h, 2.8, 4.5);
-      s.addImage({ data: imgs.coverB, x: SW - fit.w - 0.1, y: (SH - fit.h) / 2, w: fit.w, h: fit.h });
+    if (imgs.foodPlate) {
+      const fit = fitImage(dims.foodPlate.w, dims.foodPlate.h, 2.8, 4.8);
+      s.addImage({ data: imgs.foodPlate, x: SW - fit.w - 0.2, y: (SH - fit.h) / 2, w: fit.w, h: fit.h });
     }
 
-    // 中央タイトル
-    s.addText("高品質\nダウンジャケット", {
-      x: 2.8, y: bTop, w: 4.4, h: 1.4,
+    s.addText("オリジナル\n万能調味料", {
+      x: 2.5, y: bTop, w: 5.0, h: 1.4,
       fontSize: 34, fontFace: FONT, color: C.title, bold: true,
       align: "center", valign: "middle", margin: 0, lineSpacingMultiple: 1.15
     });
-    s.addShape(pres.shapes.RECTANGLE, {
-      x: 3.5, y: bTop + 1.5, w: 1.25, h: 0.035, fill: { color: C.primary }
-    });
-    s.addShape(pres.shapes.RECTANGLE, {
-      x: 4.75, y: bTop + 1.5, w: 1.75, h: 0.035, fill: { color: C.secondary }
-    });
+    s.addShape(pres.shapes.RECTANGLE, { x: 3.5, y: bTop + 1.5, w: 1.25, h: 0.035, fill: { color: C.primary } });
+    s.addShape(pres.shapes.RECTANGLE, { x: 4.75, y: bTop + 1.5, w: 1.75, h: 0.035, fill: { color: C.secondary } });
     s.addText("ご提案資料", {
       x: 3.0, y: bTop + 1.7, w: 4.0, h: 0.4,
       fontSize: 16, fontFace: FONT, color: C.sub,
@@ -240,38 +221,34 @@ async function main() {
 
   // ═══════════════════════════════════════════════
   // Slide 2: コンセプト
-  // 元PDF: 「一生モノ」+ 3つの共通ポイント
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "コンセプト");
+    const top = centerY(3.1);
 
-    const contentH = 3.1;
-    const top = centerY(contentH);
-
-    s.addText("「一生モノ」の価値を届ける", {
+    s.addText("「栄養士ママの味」をご家庭に", {
       x: 0.5, y: top, w: 9, h: 0.5,
       fontSize: 24, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
     s.addText(
-      "トレンドを追いすぎず、定番で誰もが着れて飽きがこない「冬の主役」アイテム。",
+      "栄養士資格を持つ3児のママが本気で作った、毎日の料理を格上げする万能調味料。",
       { x: 0.5, y: top + 0.65, w: 9, h: 0.4, fontSize: 16, fontFace: FONT, color: C.body,
         align: "left", valign: "middle", margin: 0 }
     );
-
     addSep(s, 0.5, top + 1.2, 9);
 
-    s.addText("スニーカーを含む靴のアイテムとも共通している:", {
+    s.addText("成瀬愛里さんとの相性:", {
       x: 0.5, y: top + 1.35, w: 9, h: 0.35, fontSize: 14, fontFace: FONT, color: C.body,
       align: "left", valign: "middle", margin: 0
     });
 
     const points = [
-      "定番で取り入れやすいシンプルなデザイン",
-      "高品質かつ手に取りやすい価格帯",
-      "スタイルアップが叶う",
+      "栄養士・料理専門家の資格を最大限に活用",
+      "32万フォロワーへのレシピ投稿との自然な連動",
+      "3児のママが実感する「時短」「栄養」「おいしい」",
     ];
     points.forEach((p, i) => {
       const py = top + 1.85 + i * 0.4;
@@ -283,45 +260,43 @@ async function main() {
       });
     });
 
-    addKeyMsg(s, "定番 x 高品質 x スタイルアップ の三拍子");
+    addKeyMsg(s, "栄養士ママ x 時短レシピ x 万能調味料");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 3: 商品概要 — 写真左2枚 + 箇条書き右
-  // 元PDF: 黒JK + 白JK の全身写真左、機能箇条書き右
+  // Slide 3: 商品概要
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "商品概要");
-
     const top = centerY(3.3);
 
-    s.addText("「盛れる」と「高品質」を両立する設計", {
+    s.addText("「振るだけ」で料理がプロの味に", {
       x: 0.5, y: top, w: 9, h: 0.4,
       fontSize: 20, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    // 左: 着用写真2枚（ベンチマーク準拠: 黒JK大+白JK）
-    if (imgs.blackFull) {
-      const fit = fitImage(dims.blackFull.w, dims.blackFull.h, 2.2, 2.8);
-      s.addImage({ data: imgs.blackFull, x: 0.5, y: top + 0.55, w: fit.w, h: fit.h });
+    // 左: 商品写真
+    if (imgs.spicesTable) {
+      const fit = fitImage(dims.spicesTable.w, dims.spicesTable.h, 2.0, 2.8);
+      s.addImage({ data: imgs.spicesTable, x: 0.5, y: top + 0.55, w: fit.w, h: fit.h });
     }
-    if (imgs.white) {
-      const fit = fitImage(dims.white.w, dims.white.h, 2.2, 2.8);
-      s.addImage({ data: imgs.white, x: 2.55, y: top + 0.55, w: fit.w, h: fit.h });
+    if (imgs.herbsFresh) {
+      const fit = fitImage(dims.herbsFresh.w, dims.herbsFresh.h, 2.5, 2.5);
+      s.addImage({ data: imgs.herbsFresh, x: 2.3, y: top + 0.7, w: fit.w, h: fit.h });
     }
 
-    // 右: 機能箇条書き（ベンチマーク準拠: ドット付き箇条書き）
+    // 右: 箇条書き
     const features = [
-      "軽くて暖かい",
-      "ウエストマークで細見え、スタイルアップ",
-      "ボリュームファーで小顔効果",
-      "ショート/ロングどちらにも合う丈感",
-      "軽くて疲れない着心地",
-      "トレンドに左右されず一生着られる安心感",
+      "厳選した天然素材のみを使用",
+      "化学調味料・保存料 無添加",
+      "肉・魚・野菜・パスタ何にでも合う",
+      "1本で味が決まるから時短調理に最適",
+      "子供も安心して食べられる優しい味",
+      "栄養士が栄養バランスも考慮した配合",
     ];
     features.forEach((f, i) => {
       const fy = top + 0.65 + i * 0.43;
@@ -333,35 +308,32 @@ async function main() {
       });
     });
 
-    addKeyMsg(s, "見た目の華やかさと実用性を兼ね備えた一着");
+    addKeyMsg(s, "無添加・天然素材の万能調味料");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 4: 機能性 — 3カラム素材カード
-  // 元PDF: FP800 / ダウン90% / ファー の3カード + 素材写真
+  // Slide 4: 原材料・機能性 — 3カラム
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
-    addHeader(s, "機能性");
-
+    addHeader(s, "原材料・機能性");
     const top = centerY(3.2);
 
-    s.addText("ハイブランドと同等のスペックを実現", {
+    s.addText("こだわり抜いた天然素材だけを使用", {
       x: 0.5, y: top, w: 9, h: 0.4,
       fontSize: 20, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    // ベンチマーク準拠: 3カラム、写真大きめ、説明文詳細
     const cards = [
-      { title: "フィルパワー (FP) 800", sub: "圧倒的な軽さ", key: "downFeather",
-        desc: "スペイン産ホワイトダックを使用予定\n見た目はボリュームがあるのに\n驚きの軽さを実現" },
-      { title: "ダウンとフェザーの黄金割合", sub: "90% / 10%", key: "downBall",
-        desc: "ダウン=柔らかくて軽い、\n暖かさをキープする役割\nフェザー=弾力があり形を整える" },
-      { title: "華やかなファーで", sub: "デザイン性をプラス", key: "woolTex",
-        desc: "シープ(羊)ファーを使用予定\n抜け毛が少なく、ボリュームが出る\nため小顔効果や映えにも有効" },
+      { title: "国産天日塩", sub: "ミネラル豊富", key: "spiceJars",
+        desc: "海水を天日で結晶化\nまろやかで深みのある塩味\n精製塩では出せない旨味" },
+      { title: "厳選スパイスブレンド", sub: "黄金比率", key: "herbsFresh",
+        desc: "ブラックペッパー・ガーリック等\n栄養士が配合バランスを監修\nどの料理にも合う黄金比率" },
+      { title: "国産かつお・昆布エキス", sub: "旨味の土台", key: "cookingPan",
+        desc: "和の旨味をベースに\n洋食にも和食にも合う\n化学調味料に頼らない自然な旨味" },
     ];
 
     const cardW = 2.8, cardGap = 0.3;
@@ -382,7 +354,6 @@ async function main() {
         align: "center", valign: "middle", margin: 0
       });
 
-      // 素材写真（ベンチマーク準拠: 大きく配置）
       if (imgs[c.key] && dims[c.key]) {
         const fit = fitImage(dims[c.key].w, dims[c.key].h, cardW - 0.2, 1.3);
         const ix = cx + (cardW - fit.w) / 2;
@@ -396,24 +367,17 @@ async function main() {
       });
     });
 
-    s.addText("※仕様変更可能", {
-      x: 7.5, y: top + 3.2, w: 2, h: 0.2,
-      fontSize: 9, fontFace: FONT, color: C.muted, align: "right", valign: "middle", margin: 0
-    });
-
-    addKeyMsg(s, "FP800・ダウン90%・シープファーのハイスペック");
+    addKeyMsg(s, "天日塩+黄金比スパイス+和の旨味エキス");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 5: 品質証明 — RDS + TC
-  // 元PDF: RDS認証マーク右 + TC証明書イメージ右
+  // Slide 5: 品質証明
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "品質証明");
-
     const top = centerY(2.8);
 
     s.addText("信頼性を保証するエビデンス", {
@@ -422,47 +386,42 @@ async function main() {
       align: "left", valign: "middle", margin: 0
     });
 
-    // RDS
-    addDefBlock(s, 0.5, top + 0.6, "RDS認証: 取得予定（動物福祉の国際認証）",
-      "強制的な飼育や生きたまま羽毛を刈り取っていない\n農場から仕入れていることを証明する国際認証マーク", 6.0);
-    s.addImage({ data: rdsImg, x: 7.0, y: top + 0.4, w: 1.5, h: 1.5 });
+    addDefBlock(s, 0.5, top + 0.6, "国内GMP工場で製造",
+      "食品衛生法に基づくGMP認定工場\n原料入荷から出荷まで一貫した品質管理", 6.0);
+    s.addImage({ data: gmpImg, x: 7.0, y: top + 0.4, w: 1.5, h: 1.5 });
 
     addSep(s, 0.5, top + 1.5, 9);
 
-    // TC
-    addDefBlock(s, 0.5, top + 1.7, "TC（Transaction Certificate）: 発行可能",
-      "素材のパスポートのような証明書。偽物ではなく\nクリーンなルートで届いた本物である証明", 6.0);
-    s.addImage({ data: tcImg, x: 7.0, y: top + 1.5, w: 1.2, h: 1.7 });
+    addDefBlock(s, 0.5, top + 1.7, "無添加処方",
+      "化学調味料・保存料・着色料 不使用\n子供から大人まで安心して使える", 6.0);
+    s.addImage({ data: mutenkaImg, x: 7.0, y: top + 1.5, w: 1.2, h: 1.7 });
 
-    addKeyMsg(s, "国際認証で品質と倫理性を担保");
+    addKeyMsg(s, "GMP工場製造+完全無添加で安心品質");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 6: 他ハイブランドとの比較
-  // 元PDF: 4列比較テーブル
+  // Slide 6: 競合比較テーブル
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
-    addHeader(s, "他ハイブランドとの比較");
-
+    addHeader(s, "競合比較");
     const top = centerY(2.8);
 
-    const headers = ["スペック項目", "本企画", "MONCLER", "PRADA等"];
+    const headers = ["スペック項目", "本企画", "ほりにし", "マキシマム"];
     const dataRows = [
-      ["フィルパワー(FP)", "800FP", "710~800", "650~750(推定)"],
-      ["ダウン混合率", "90% / 10%", "90% / 10%", "90% / 10%"],
-      ["シルエット設計", "美くびれ・スタイルUP", "曲線美・ラグジュアリー", "ミニマル・モード"],
-      ["ファーの品質", "シープ", "シープ / フォックス", "なし / 合成 / シープ"],
-      ["販売価格帯", "15万 ~ 30万", "25万 ~ 50万+", "30万 ~ 60万+"],
+      ["無添加", "○(完全無添加)", "×(一部添加物)", "×(一部添加物)"],
+      ["栄養士監修", "○", "×", "×"],
+      ["和洋対応", "○(万能)", "△(洋食寄り)", "△(洋食寄り)"],
+      ["容量", "80g", "100g", "140g"],
+      ["販売価格", "800~1,500円", "900円前後", "500円前後"],
     ];
 
     const colX = [0.5, 2.5, 5.0, 7.25];
     const colW = [2.0, 2.5, 2.25, 2.25];
     const hdrH = 0.42, rowH = 0.4;
 
-    // ヘッダー行
     s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: top, w: 9.0, h: hdrH, fill: { color: C.primary } });
     headers.forEach((h, i) => {
       s.addText(h, {
@@ -472,7 +431,6 @@ async function main() {
       });
     });
 
-    // データ行
     dataRows.forEach((row, ri) => {
       const ry = top + hdrH + ri * rowH;
       if (ri % 2 === 0) {
@@ -495,85 +453,86 @@ async function main() {
       fontSize: 9, fontFace: FONT, color: C.muted, align: "right", valign: "middle", margin: 0
     });
 
-    addKeyMsg(s, "ハイブランド同等スペックを半額以下で実現");
+    addKeyMsg(s, "栄養士監修×完全無添加は本企画だけ");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
   // Slide 7: 生産背景
-  // 元PDF: 工場実績 + コールアウトボックス（写真なし）
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "生産背景");
-
     const top = centerY(2.9);
 
-    s.addText("ハイブランド実績のある工場", {
+    s.addText("国内GMP食品工場で一貫製造", {
       x: 0.5, y: top, w: 9, h: 0.4,
       fontSize: 20, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    addDefBlock(s, 0.5, top + 0.6, "主要実績", "Max Mara, Acne Studios, THE NORTH FACE", 9);
-    addDefBlock(s, 0.5, top + 1.45, "過去実績", "Canada Goose", 9);
+    addDefBlock(s, 0.5, top + 0.6, "製造工場",
+      "国内のGMP認定食品工場\nスパイス・調味料の製造実績豊富", 5.5);
+
+    addDefBlock(s, 0.5, top + 1.45, "品質管理",
+      "原料の残留農薬検査を全ロット実施\n微生物検査・金属検出も実施", 5.5);
+
+    // 右: 工場写真
+    if (imgs.kitchenPrep) {
+      const fit = fitImage(dims.kitchenPrep.w, dims.kitchenPrep.h, 3.2, 2.0);
+      s.addImage({ data: imgs.kitchenPrep, x: 6.3, y: top + 0.5, w: fit.w, h: fit.h });
+    }
 
     addSep(s, 0.5, top + 2.25, 9);
 
     s.addShape(pres.shapes.RECTANGLE, {
       x: 0.5, y: top + 2.4, w: 9, h: 0.5, fill: { color: C.kmBg }
     });
-    s.addText("工場は中国にあり、製造時に工場見学 / 撮影が可能です", {
+    s.addText("全ロットの検査成績書を発行可能です", {
       x: 0.7, y: top + 2.4, w: 8.6, h: 0.5,
       fontSize: 15, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    addKeyMsg(s, "ハイブランドOEM工場で製造。現地撮影も可能");
+    addKeyMsg(s, "国内GMP工場で製造。全ロット検査済み");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 8: デザインイメージ — 商品写真左大 + スペック右
-  // 元PDF: 写真左上から大きく配置。「MONCLERをベンチマーク」が写真直上。箇条書き右。
+  // Slide 8: パッケージデザイン
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
-    addHeader(s, "デザインイメージ");
-
-    // 元PDFに合わせて写真を大きく左配置（ヘッダー直下から）
+    addHeader(s, "パッケージデザイン");
     const photoTop = BODY_TOP + 0.1;
 
-    s.addText("MONCLERをベンチマーク", {
+    s.addText("ほりにしをベンチマーク", {
       x: 0.5, y: photoTop, w: 4.0, h: 0.3,
       fontSize: 16, fontFace: FONT, color: C.title, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    // 左: 商品写真 — 大きく縦に配置（アスペクト比維持）
-    const photoMaxW = 3.8, photoMaxH = 3.2;
-    if (imgs.blackFull) {
-      const fit = fitImage(dims.blackFull.w, dims.blackFull.h, photoMaxW, photoMaxH);
-      s.addImage({ data: imgs.blackFull, x: 0.5, y: photoTop + 0.4, w: fit.w, h: fit.h });
+    // 左: 商品写真
+    if (imgs.spiceJars) {
+      const fit = fitImage(dims.spiceJars.w, dims.spiceJars.h, 3.5, 3.2);
+      s.addImage({ data: imgs.spiceJars, x: 0.5, y: photoTop + 0.4, w: fit.w, h: fit.h });
     }
 
-    // 右: 箇条書き（写真と同じ高さから開始）
+    // 右: 仕様箇条書き
     const specX = 4.5, specW = 5.0;
     let sy = photoTop + 0.4;
 
-    // 3WAY構造
     s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
-    s.addText("フードとファーは取り外し可能な設計で3WAY構造", {
+    s.addText("片手で振れるワンタッチキャップ", {
       x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.3,
       fontSize: 13, fontFace: FONT, color: C.body, bold: true,
       align: "left", valign: "middle", margin: 0
     });
     sy += 0.35;
 
-    // サブリスト
-    const subItems = ["1. ファー+フード付き", "2. ファーなしフード付き", "3. ファーとフードなし"];
+    const subItems = ["1. 料理中でも片手操作OK", "2. 出し過ぎ防止の穴サイズ設計"];
     subItems.forEach((item) => {
       s.addText(item, {
         x: specX + 0.5, y: sy, w: specW - 0.5, h: 0.25,
@@ -584,24 +543,22 @@ async function main() {
     });
     sy += 0.1;
 
-    // 2WAY構造
     s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
-    s.addText("ウエストベルトも取り外し可能な設計で2WAY構造", {
+    s.addText("キッチンに置いても映えるナチュラルデザイン", {
       x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.3,
       fontSize: 13, fontFace: FONT, color: C.body, bold: true,
       align: "left", valign: "middle", margin: 0
     });
     sy += 0.3;
-    s.addText("（くびれシルエットでベルトなしでもくびれメイクできる仕様）", {
+    s.addText("（SNS投稿時の背景にもなじむ）", {
       x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.3,
       fontSize: 11, fontFace: FONT, color: C.sub,
       align: "left", valign: "middle", margin: 0
     });
     sy += 0.4;
 
-    // 着丈
     s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
-    s.addText("160cmの女性でお尻が隠れるくらいの着丈", {
+    s.addText("湿気を防ぐ内蓋付きで長期保存可能", {
       x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.3,
       fontSize: 13, fontFace: FONT, color: C.body, bold: true,
       align: "left", valign: "middle", margin: 0
@@ -612,99 +569,77 @@ async function main() {
       fontSize: 9, fontFace: FONT, color: C.muted, align: "right", valign: "middle", margin: 0
     });
 
-    addKeyMsg(s, "3WAYフード + 2WAYベルトで着回し自在");
+    addKeyMsg(s, "ワンタッチキャップ+映えるデザイン");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 9: カラー・サイズ展開 — 着用写真2枚左 + 情報右
-  // 元PDF: 2着用写真左 + カラー情報右 + 商品切り抜き右下
+  // Slide 9: ラインナップ
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
-    addHeader(s, "カラー・サイズ展開");
-
+    addHeader(s, "ラインナップ");
     const top = centerY(3.0);
 
-    // ベンチマーク準拠: 左に着用写真2枚（黒+白）、右にスペック
-    // 黒JK (大きめ)
-    if (imgs.black) {
-      const fit = fitImage(dims.black.w, dims.black.h, 2.3, 2.9);
-      s.addImage({ data: imgs.black, x: 0.5, y: top + 0.1, w: fit.w, h: fit.h });
-    }
-    // 白JK (横に並べる)
-    if (imgs.coverB) {
-      const fit = fitImage(dims.coverB.w, dims.coverB.h, 2.3, 2.9);
-      s.addImage({ data: imgs.coverB, x: 2.65, y: top + 0.1, w: fit.w, h: fit.h });
+    // 左: 写真
+    if (imgs.foodPlate) {
+      const fit = fitImage(dims.foodPlate.w, dims.foodPlate.h, 4.5, 2.9);
+      s.addImage({ data: imgs.foodPlate, x: 0.5, y: top + 0.1, w: fit.w, h: fit.h });
     }
 
-    // 右上: サイズ・カラー情報
     const infoX = 5.3;
     s.addShape(pres.shapes.OVAL, { x: infoX, y: top + 0.15, w: 0.13, h: 0.13, fill: { color: C.primary } });
-    s.addText("フリーサイズ想定", {
+    s.addText("3種展開想定", {
       x: infoX + 0.25, y: top + 0.08, w: 4, h: 0.3,
       fontSize: 13, fontFace: FONT, color: C.body, align: "left", valign: "middle", margin: 0
     });
-    s.addShape(pres.shapes.OVAL, { x: infoX, y: top + 0.5, w: 0.13, h: 0.13, fill: { color: C.primary } });
-    s.addText("ブラックとホワイトの2色展開想定", {
-      x: infoX + 0.25, y: top + 0.43, w: 4, h: 0.3,
-      fontSize: 13, fontFace: FONT, color: C.body, align: "left", valign: "middle", margin: 0
-    });
 
-    addSep(s, infoX, top + 0.85, 4.2);
+    addSep(s, infoX, top + 0.55, 4.2);
 
-    // カラー詳細
-    const colors = [
-      { label: "ブラック本体", detail: "ファーはブラウンベージュ" },
-      { label: "ホワイト本体", detail: "ファーはミルクベージュ" },
+    const types = [
+      { label: "オリジナル(80g)", detail: "肉・魚・野菜なんでも合う万能タイプ" },
+      { label: "ガーリック(80g)", detail: "にんにく好きに。炒め物・パスタに最適" },
+      { label: "ゆず胡椒(60g)", detail: "和の香り。鍋・焼き鳥・刺身にも" },
     ];
-    colors.forEach((c, i) => {
-      const cy = top + 1.05 + i * 0.55;
-      s.addShape(pres.shapes.RECTANGLE, { x: infoX, y: cy, w: 0.06, h: 0.42, fill: { color: C.primary } });
+    types.forEach((c, i) => {
+      const cy = top + 0.75 + i * 0.65;
+      s.addShape(pres.shapes.RECTANGLE, { x: infoX, y: cy, w: 0.06, h: 0.5, fill: { color: C.primary } });
       s.addText(c.label, {
-        x: infoX + 0.2, y: cy, w: 4, h: 0.22,
-        fontSize: 13, fontFace: FONT, color: C.title, bold: true,
+        x: infoX + 0.2, y: cy, w: 4, h: 0.25,
+        fontSize: 14, fontFace: FONT, color: C.title, bold: true,
         align: "left", valign: "middle", margin: 0
       });
       s.addText(c.detail, {
-        x: infoX + 0.2, y: cy + 0.22, w: 4, h: 0.2,
+        x: infoX + 0.2, y: cy + 0.25, w: 4, h: 0.22,
         fontSize: 12, fontFace: FONT, color: C.sub,
         align: "left", valign: "middle", margin: 0
       });
     });
 
-    // 右下: 商品切り抜き写真（ベンチマーク準拠）
-    if (imgs.beltDetail) {
-      const fit = fitImage(dims.beltDetail.w, dims.beltDetail.h, 2.5, 1.2);
-      s.addImage({ data: imgs.beltDetail, x: infoX + (4.2 - fit.w) / 2, y: top + 2.2, w: fit.w, h: fit.h });
-    }
-
-    addKeyMsg(s, "ブラック x ホワイトの定番2色 / フリーサイズ");
+    addKeyMsg(s, "オリジナル x ガーリック x ゆず胡椒の3種");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 10: 販売戦略 — テキスト左 + 写真右
-  // 元PDF: 3施策左 + モデル写真+ノベルティ写真右
+  // Slide 10: 販売戦略
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "販売戦略");
-
     const top = centerY(2.7);
 
-    s.addText("タレント/モデル起用の撮影とノベルティ", {
+    s.addText("レシピ投稿との連動で認知拡大", {
       x: 0.5, y: top, w: 6, h: 0.4,
       fontSize: 18, fontFace: FONT, color: C.primary, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
     const strategies = [
-      { title: "モデル起用のプロモーション撮影", desc: "知名度のあるモデル・タレントを起用し洗練された撮影" },
-      { title: "ポップアップや展示会の開催", desc: "高価格帯アパレルのため実際に触れる機会を提供" },
-      { title: "販売記念のノベルティ", desc: "ファーと同素材のチャーム等、購入特典を検討中" },
+      { title: "毎日のレシピ投稿で調味料を自然露出", desc: "普段の料理投稿にさりげなくボトルを映す" },
+      { title: "「この調味料だけで味が決まる」Reels", desc: "時短レシピ×万能調味料の訴求動画" },
+      { title: "購入特典: レシピカード10枚セット", desc: "成瀬さんオリジナルレシピを同封" },
     ];
 
     strategies.forEach((st, i) => {
@@ -722,45 +657,43 @@ async function main() {
       });
     });
 
-    // 右: モデル写真（上半分）+ ノベルティ写真（下半分）
     const imgX = 6.5, imgW = 3.0;
-    if (imgs.modelPromo) {
-      const fit = fitImage(dims.modelPromo.w, dims.modelPromo.h, imgW, 1.5);
-      s.addImage({ data: imgs.modelPromo, x: imgX + (imgW - fit.w) / 2, y: top + 0.1, w: fit.w, h: fit.h });
+    if (imgs.momCooking) {
+      const fit = fitImage(dims.momCooking.w, dims.momCooking.h, imgW, 1.5);
+      s.addImage({ data: imgs.momCooking, x: imgX + (imgW - fit.w) / 2, y: top + 0.1, w: fit.w, h: fit.h });
     }
-    if (imgs.giftBox && dims.giftBox) {
-      const fit = fitImage(dims.giftBox.w, dims.giftBox.h, imgW, 1.3);
-      s.addImage({ data: imgs.giftBox, x: imgX + (imgW - fit.w) / 2, y: top + 1.7, w: fit.w, h: fit.h });
+    if (imgs.foodPlate) {
+      const fit = fitImage(dims.foodPlate.w, dims.foodPlate.h, imgW, 1.3);
+      s.addImage({ data: imgs.foodPlate, x: imgX + (imgW - fit.w) / 2, y: top + 1.7, w: fit.w, h: fit.h });
     }
 
-    addKeyMsg(s, "撮影・展示会・ノベルティの三本柱で販売加速");
+    addKeyMsg(s, "レシピ投稿+Reels+レシピカード特典で拡販");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
   // Slide 11: スケジュール
-  // 元PDF: タイムラインテーブル + 注記ボックス
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "スケジュール");
-
     const top = centerY(3.0);
 
     const headers = ["時期", "進行管理", "詳細"];
     const dataRows = [
-      ["4月上旬", "1stサンプル発注", "ベンチマークサンプルの発注"],
-      ["4月下旬", "1stサンプルアップ", "デザイン・仕様の確認、2ndサンプル進行"],
-      ["5月中旬〜下旬", "2ndサンプルアップ", "デザイン・仕様の最終確認"],
-      ["5月下旬", "量産発注", "2026AWに向けて発注"],
-      ["10月下旬〜11月上旬", "製品納品", "製品が倉庫に納品"],
-      ["11月中旬", "リリース", "製品本販売開始"],
+      ["4月", "企画・レシピ開発", "調味料コンセプト・配合方針の確定"],
+      ["5月", "試作・味の調整", "栄養士監修のもと試作と改良"],
+      ["6月", "パッケージデザイン確定", "ラベル・ボトル形状の最終決定"],
+      ["7月", "量産", "GMP工場にて量産スタート"],
+      ["8月", "製品納品・検品", "全ロット検査後、倉庫に納品"],
+      ["9月", "プロモーション撮影", "レシピ動画・商品写真の撮影"],
+      ["10月", "リリース", "EC+SNSプロモーション開始"],
     ];
 
     const colX = [0.5, 2.7, 5.1];
     const colW = [2.2, 2.4, 4.4];
-    const hdrH = 0.38, rowH = 0.35;
+    const hdrH = 0.38, rowH = 0.32;
 
     s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: top, w: 9.0, h: hdrH, fill: { color: C.primary } });
     headers.forEach((h, i) => {
@@ -779,59 +712,55 @@ async function main() {
       row.forEach((cell, ci) => {
         s.addText(cell, {
           x: colX[ci], y: ry, w: colW[ci], h: rowH,
-          fontSize: 11, fontFace: FONT, color: C.body,
-          bold: ci === 0, align: "center", valign: "middle", margin: 0
+          fontSize: 11, fontFace: FONT,
+          color: ci === 0 ? C.primary : C.body,
+          bold: ci <= 1,
+          align: "center", valign: "middle", margin: 0
         });
       });
       addSep(s, 0.5, ry + rowH - 0.01, 9);
     });
 
-    // 注記
-    const noteY = top + hdrH + dataRows.length * rowH + 0.1;
-    s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: noteY, w: 9, h: 0.38, fill: { color: C.kmBg } });
-    s.addText("※優先的に進行するためタイトなスケジュールです。", {
-      x: 0.7, y: noteY, w: 8.6, h: 0.38,
-      fontSize: 12, fontFace: FONT, color: C.primary,
+    s.addText("※秋の食欲シーズンに合わせたスケジュール", {
+      x: 0.5, y: top + hdrH + dataRows.length * rowH + 0.08, w: 9, h: 0.3,
+      fontSize: 11, fontFace: FONT, color: C.primary,
       align: "left", valign: "middle", margin: 0
     });
 
-    addKeyMsg(s, "4月発注 → 11月リリースの製造スケジュール");
+    addKeyMsg(s, "4月企画 → 10月リリースの製造スケジュール");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
   // Slide 12: 販売イメージ
-  // 元PDF: 9行サマリーテーブル
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "販売イメージ");
-
-    const top = centerY(3.4);
-
-    const colX = [0.5, 2.5, 5.2];
-    const colW = [2.0, 2.7, 4.3];
-    const hdrH = 0.34, rowH = 0.33;
+    const top = centerY(2.8);
 
     const headers = ["項目", "内容", "備考"];
     const dataRows = [
-      ["販売価格", "15~30万円", "デザイン・仕様によって変動あり"],
-      ["販売時期", "11月中旬ごろ", "案件状況により調整"],
-      ["機能性", "ハイブランド同等の高品質", "800FP、ダウン90%、実績ある工場"],
-      ["デザイン性", "スタイルアップ&小顔効果", "くびれライン+ボリュームファー"],
-      ["販売戦略", "モデルやタレント起用", "ノベルティ施策も検討中"],
-      ["サイズ展開", "フリーサイズ", "サイズ展開可"],
-      ["カラー展開", "ブラック、ホワイト 2色", "カラー展開可"],
-      ["生産数", "300~1,000着", "価格とプロモーションで変動"],
-      ["売上想定", "4,500万~1.5億円", "販売価格15万円想定で算出"],
+      ["販売価格", "800-1,500円", "タイプによって変動"],
+      ["販売時期", "10月", "秋の食欲シーズンに合わせて"],
+      ["原材料", "天然素材のみ", "化学調味料・保存料無添加"],
+      ["品質", "GMP工場+全ロット検査", "栄養士監修の配合"],
+      ["販売戦略", "レシピ投稿連動", "32万フォロワーへの自然露出"],
+      ["ラインナップ", "3種", "オリジナル・ガーリック・ゆず胡椒"],
+      ["生産数", "5,000-20,000個", "初回ロット想定"],
+      ["売上想定", "400万-3,000万円", "販売価格800-1500円で算出"],
     ];
+
+    const colX = [0.5, 2.7, 5.1];
+    const colW = [2.2, 2.4, 4.4];
+    const hdrH = 0.38, rowH = 0.3;
 
     s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: top, w: 9.0, h: hdrH, fill: { color: C.primary } });
     headers.forEach((h, i) => {
       s.addText(h, {
         x: colX[i], y: top, w: colW[i], h: hdrH,
-        fontSize: 11, fontFace: FONT, color: C.white, bold: true,
+        fontSize: 12, fontFace: FONT, color: C.white, bold: true,
         align: "center", valign: "middle", margin: 0
       });
     });
@@ -844,46 +773,49 @@ async function main() {
       row.forEach((cell, ci) => {
         s.addText(cell, {
           x: colX[ci], y: ry, w: colW[ci], h: rowH,
-          fontSize: ci === 0 ? 11 : 10, fontFace: FONT,
-          color: ci === 0 ? C.title : C.body, bold: ci === 0,
+          fontSize: 11, fontFace: FONT,
+          color: C.body,
+          bold: ci === 0,
           align: "center", valign: "middle", margin: 0
         });
       });
       addSep(s, 0.5, ry + rowH - 0.01, 9);
     });
 
-    addKeyMsg(s, "売上想定4,500万〜1.5億円のポテンシャル");
+    addKeyMsg(s, "売上想定400万〜3,000万円のポテンシャル");
     addPageNum(s, pg + 1);
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 13: エンド
+  // Slide 13: エンドスライド
   // ═══════════════════════════════════════════════
   {
     const s = pres.addSlide();
     s.background = { color: C.bg };
-    const bTop = (SH - 1.8) / 2;
+    const mid = SH / 2 - 0.5;
 
-    s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: bTop, w: 4.25, h: 0.035, fill: { color: C.primary } });
-    s.addShape(pres.shapes.RECTANGLE, { x: 4.75, y: bTop, w: 4.75, h: 0.035, fill: { color: C.secondary } });
-    s.addText("高品質ダウンジャケット\nご提案資料", {
-      x: 0.5, y: bTop + 0.2, w: 9, h: 0.8,
-      fontSize: 28, fontFace: FONT, color: C.title, bold: true,
-      align: "center", valign: "middle", margin: 0, lineSpacingMultiple: 1.15
+    s.addShape(pres.shapes.RECTANGLE, { x: 1.5, y: mid - 0.3, w: 3.25, h: 0.035, fill: { color: C.primary } });
+    s.addShape(pres.shapes.RECTANGLE, { x: 4.75, y: mid - 0.3, w: 3.75, h: 0.035, fill: { color: C.secondary } });
+
+    s.addText("オリジナル万能調味料\nご提案資料", {
+      x: 1.5, y: mid, w: 7.0, h: 1.0,
+      fontSize: 30, fontFace: FONT, color: C.title, bold: true,
+      align: "center", valign: "middle", margin: 0, lineSpacingMultiple: 1.2
     });
     s.addText("ご検討のほど、よろしくお願いいたします。", {
-      x: 0.5, y: bTop + 1.1, w: 9, h: 0.35,
+      x: 2.0, y: mid + 1.2, w: 6.0, h: 0.4,
       fontSize: 14, fontFace: FONT, color: C.sub,
       align: "center", valign: "middle", margin: 0
     });
     s.addText("2026年4月", {
-      x: 0.5, y: bTop + 1.55, w: 9, h: 0.3,
+      x: 2.0, y: mid + 1.7, w: 6.0, h: 0.3,
       fontSize: 12, fontFace: FONT, color: C.muted,
       align: "center", valign: "middle", margin: 0
     });
   }
 
-  const outPath = "/tmp/influencer-proposal-v1.pptx";
+  // ── Save ──
+  const outPath = "/tmp/seasoning-proposal-v1.pptx";
   await pres.writeFile({ fileName: outPath });
   console.log(`Done: ${outPath} (${pres.slides.length} slides)`);
 }
