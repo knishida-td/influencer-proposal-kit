@@ -524,53 +524,74 @@ async function main() {
   }
 
   // ═══════════════════════════════════════════════
-  // Slide 8: デザインイメージ — 商品写真左 + スペック右
-  // 元PDF: MONCLER風JK写真左 + 3WAY/2WAY箇条書き右
+  // Slide 8: デザインイメージ — 商品写真左大 + スペック右
+  // 元PDF: 写真左上から大きく配置。「MONCLERをベンチマーク」が写真直上。箇条書き右。
   // ═══════════════════════════════════════════════
   {
     pg++;
     const s = pres.addSlide();
     addHeader(s, "デザインイメージ");
 
-    const top = centerY(2.6);
+    // 元PDFに合わせて写真を大きく左配置（ヘッダー直下から）
+    const photoTop = BODY_TOP + 0.1;
 
     s.addText("MONCLERをベンチマーク", {
-      x: 0.5, y: top, w: 9, h: 0.35,
+      x: 0.5, y: photoTop, w: 4.0, h: 0.3,
       fontSize: 16, fontFace: FONT, color: C.title, bold: true,
       align: "left", valign: "middle", margin: 0
     });
 
-    // 左: 商品写真（アスペクト比維持）
-    if (imgs.black) {
-      const fit = fitImage(dims.black.w, dims.black.h, 3.5, 2.6);
-      s.addImage({ data: imgs.black, x: 0.5, y: top + 0.5, w: fit.w, h: fit.h });
+    // 左: 商品写真 — 大きく縦に配置（アスペクト比維持）
+    const photoMaxW = 3.8, photoMaxH = 3.2;
+    if (imgs.blackFull) {
+      const fit = fitImage(dims.blackFull.w, dims.blackFull.h, photoMaxW, photoMaxH);
+      s.addImage({ data: imgs.blackFull, x: 0.5, y: photoTop + 0.4, w: fit.w, h: fit.h });
     }
 
-    // 右: スペック
-    const specs = [
-      { bullet: true, text: "フードとファーは取り外し可能な3WAY構造" },
-      { bullet: false, text: "  1. ファー+フード付き\n  2. ファーなしフード付き\n  3. ファーとフードなし" },
-      { bullet: true, text: "ウエストベルトも取り外し可能な2WAY構造" },
-      { bullet: true, text: "160cmの女性でお尻が隠れるくらいの着丈" },
-    ];
+    // 右: 箇条書き（写真と同じ高さから開始）
+    const specX = 4.7, specW = 4.8;
+    let sy = photoTop + 0.4;
 
-    let sy = top + 0.5;
-    specs.forEach((sp) => {
-      const isSub = !sp.bullet;
-      const h = isSub ? 0.6 : 0.3;
-      if (sp.bullet) {
-        s.addShape(pres.shapes.OVAL, { x: 4.5, y: sy + 0.07, w: 0.13, h: 0.13, fill: { color: C.primary } });
-      }
-      s.addText(sp.text, {
-        x: isSub ? 4.8 : 4.75, y: sy, w: 4.75, h,
-        fontSize: isSub ? 12 : 13, fontFace: FONT, color: C.body,
-        bold: sp.bullet, align: "left", valign: "top", margin: 0, lineSpacingMultiple: 1.3
+    // 3WAY構造
+    s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
+    s.addText("フードとファーはそれぞれ取り外し可能な設計で3WAY構造", {
+      x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.55,
+      fontSize: 13, fontFace: FONT, color: C.body, bold: true,
+      align: "left", valign: "top", margin: 0, lineSpacingMultiple: 1.3
+    });
+    sy += 0.55;
+
+    // サブリスト
+    const subItems = ["1. ファー+フード付き", "2. ファーなしフード付き", "3. ファーとフードなし"];
+    subItems.forEach((item) => {
+      s.addText(item, {
+        x: specX + 0.5, y: sy, w: specW - 0.5, h: 0.25,
+        fontSize: 12, fontFace: FONT, color: C.body,
+        align: "left", valign: "middle", margin: 0
       });
-      sy += h + 0.08;
+      sy += 0.25;
+    });
+    sy += 0.1;
+
+    // 2WAY構造
+    s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
+    s.addText("ウエストベルトも取り外し可能な設計で2WAY構造\n（くびれシルエットでベルトなしでもくびれメイクできる仕様）", {
+      x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.7,
+      fontSize: 13, fontFace: FONT, color: C.body, bold: true,
+      align: "left", valign: "top", margin: 0, lineSpacingMultiple: 1.3
+    });
+    sy += 0.8;
+
+    // 着丈
+    s.addShape(pres.shapes.OVAL, { x: specX, y: sy + 0.06, w: 0.14, h: 0.14, fill: { color: C.primary } });
+    s.addText("160cmの女性でお尻が隠れるくらいの着丈", {
+      x: specX + 0.25, y: sy, w: specW - 0.25, h: 0.3,
+      fontSize: 13, fontFace: FONT, color: C.body, bold: true,
+      align: "left", valign: "middle", margin: 0
     });
 
     s.addText("※デザイン変更可能", {
-      x: 7.5, y: top + 3.0, w: 2, h: 0.2,
+      x: 7.5, y: BODY_BOT - 0.3, w: 2, h: 0.2,
       fontSize: 9, fontFace: FONT, color: C.muted, align: "right", valign: "middle", margin: 0
     });
 
