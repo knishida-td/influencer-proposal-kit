@@ -61,11 +61,11 @@ SlideKit準拠（claude-pptx-mcp と同一のデザインシステム）。
 
 ### Google Slides自動アップロード（任意）
 
-GAS Webアプリをデプロイすると、生成したPPTXを自動でGoogle Slidesにアップロードできます。
+`clasp login` を一度実行するだけで、生成したPPTXを自動でGoogle Slidesにアップロードできます。
 
-1. `gas/upload-to-slides.gs` をGoogle Apps Scriptにコピー
-2. Drive APIサービスを有効化（エディタ → サービス → Drive API）
-3. デプロイ → ウェブアプリ → アクセス: 全員 → デプロイ
-4. URLを設定: `echo 'GAS_UPLOAD_URL="https://script.google.com/macros/s/xxxxx/exec"' > ~/.config/influencer-proposal-kit/config`
+```bash
+npm install -g @google/clasp
+clasp login
+```
 
 未設定でも提案書の生成自体は可能です（手動でGoogle Driveにアップロード）。

@@ -65,9 +65,9 @@ description: "インフルエンサー向け商品コラボ提案資料を生成
    └─ 問題あれば修正して再生成
 
 6. Google Slidesアップロード
-   ├─ scripts/upload-to-gslides.sh でGoogle Driveにアップ
-   │  （GAS WebアプリにBase64送信 → Google Slides変換）
-   ├─ GAS未設定の場合は `open` でファイルを開いて手動案内
+   ├─ scripts/upload-to-gslides.sh でGoogle Drive APIに直接アップ
+   │  （clasp認証トークン流用 → multipart upload → Google Slides自動変換）
+   ├─ clasp未認証の場合は `open` でファイルを開いて手動案内
    └─ URLをユーザーに返却
 ```
 

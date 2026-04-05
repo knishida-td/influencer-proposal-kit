@@ -95,20 +95,20 @@ fi
 install_file "upload-to-gslides.sh" "scripts/upload-to-gslides.sh" "$PROJECT_DIR/scripts/upload-to-gslides.sh" || true
 chmod +x "$PROJECT_DIR/scripts/upload-to-gslides.sh" 2>/dev/null || true
 
-# ── 7. GAS設定の確認 ──
-CONFIG_DIR="$HOME/.config/influencer-proposal-kit"
-CONFIG_FILE="$CONFIG_DIR/config"
-mkdir -p "$CONFIG_DIR"
+# ── 7. clasp (Google Slides アップロード用) の確認 ──
+if command -v clasp &>/dev/null; then
+  echo "  clasp はインストール済みです"
+else
+  echo "  clasp をインストール中..."
+  npm install -g @google/clasp 2>/dev/null || echo "  ⚠ clasp のインストールに失敗しました（npm install -g @google/clasp を手動実行してください）"
+fi
 
-if [ -f "$CONFIG_FILE" ] && grep -q "GAS_UPLOAD_URL" "$CONFIG_FILE" 2>/dev/null; then
-  echo "  Google Slidesアップロード設定済みです"
+if [ -f "$HOME/.clasprc.json" ]; then
+  echo "  clasp 認証済みです"
 else
   echo ""
-  echo "  Google Slides自動アップロードの設定（任意）:"
-  echo "  1. gas/upload-to-slides.gs をGoogle Apps Scriptにデプロイ"
-  echo "  2. 以下を実行:"
-  echo '     echo '\''GAS_UPLOAD_URL="https://script.google.com/macros/s/xxxxx/exec"'\'' > '"$CONFIG_FILE"
-  echo "  ※未設定でも提案書の生成自体は可能です（手動アップロード）"
+  echo "  Google Slides自動アップロードを使うには clasp login を実行してください（任意）"
+  echo "  ※未設定でも提案書の生成自体は可能です"
 fi
 
 # ── 8. pptx MCP サーバーの確認 ──
