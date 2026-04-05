@@ -11,7 +11,12 @@
     "naturalOil": "natural-oil.jpg",
     "labCosmetic": "lab-cosmetic.jpg",
     "dropper": "dropper.jpg",
-    "arganOil": "argan-oil.jpg"
+    "arganOil": "argan-oil.jpg",
+    "oilTexture": "oil-texture.jpg",
+    "hairProducts": "hair-products.jpg",
+    "glassBottle": "glass-bottle.jpg",
+    "bathroomShelf": "bathroom-shelf.jpg",
+    "womanHairBack": "woman-hair.jpg"
   },
   "badges": {
     "cosmos": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><circle cx='150' cy='150' r='145' fill='#2E7D32' stroke='#1B5E20' stroke-width='4'/><circle cx='150' cy='150' r='120' fill='none' stroke='#A5D6A7' stroke-width='2'/><text x='150' y='100' text-anchor='middle' fill='#FFFFFF' font-family='Helvetica,Arial' font-size='22' font-weight='bold'>COSMOS</text><text x='150' y='135' text-anchor='middle' fill='#C8E6C9' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>ORGANIC</text><text x='150' y='170' text-anchor='middle' fill='#A5D6A7' font-family='Helvetica,Arial' font-size='13'>CERTIFIED</text><text x='150' y='260' text-anchor='middle' fill='#C8E6C9' font-family='Helvetica,Arial' font-size='10'>NATURAL COSMETICS</text></svg>",
@@ -19,7 +24,7 @@
   },
   "cover": {
     "leftImg": "dropper",
-    "rightImg": "womanHair",
+    "rightImg": "womanHairBack",
     "title": "プレミアム\nヘアオイル"
   },
   "concept": {
@@ -35,8 +40,8 @@
   },
   "overview": {
     "headline": "「艶」と「まとまり」を1プッシュで",
-    "leftImg": "dropper",
-    "rightImg": "cosmeticFlatlay",
+    "leftImg": "cosmeticFlatlay",
+    "rightImg": "arganOil",
     "features": [
       "天然由来成分95%以上配合",
       "アルガンオイル+ホホバオイルのW処方",
@@ -51,92 +56,240 @@
     "header": "成分・機能性",
     "headline": "サロン品質の成分を惜しみなく配合",
     "cards": [
-      { "title": "アルガンオイル", "sub": "モロッコ産", "imgKey": "arganOil", "desc": "ビタミンEが豊富\nダメージ補修+保湿\n「液体の黄金」と呼ばれる希少オイル" },
-      { "title": "ホホバオイル", "sub": "オーガニック認証", "imgKey": "naturalOil", "desc": "人の皮脂に近い構造\n髪に素早く浸透\nベタつかないサラサラ仕上げ" },
-      { "title": "ヒートプロテクト処方", "sub": "ドライヤー対応", "imgKey": "labCosmetic", "desc": "180度までの熱から髪を保護\n毎日のドライヤーでも安心\nカラーの退色も防止" }
+      {
+        "title": "アルガンオイル",
+        "sub": "モロッコ産",
+        "imgKey": "oilTexture",
+        "desc": "ビタミンEが豊富\nダメージ補修+保湿\n「液体の黄金」と呼ばれる希少オイル"
+      },
+      {
+        "title": "ホホバオイル",
+        "sub": "オーガニック認証",
+        "imgKey": "naturalOil",
+        "desc": "人の皮脂に近い構造\n髪に素早く浸透\nベタつかないサラサラ仕上げ"
+      },
+      {
+        "title": "ヒートプロテクト処方",
+        "sub": "ドライヤー対応",
+        "imgKey": "labCosmetic",
+        "desc": "180度までの熱から髪を保護\n毎日のドライヤーでも安心\nカラーの退色も防止"
+      }
     ],
     "keyMsg": "アルガン+ホホバ+ヒートプロテクトの三重処方"
   },
   "quality": {
-    "cert1": { "title": "COSMOS ORGANIC認証", "body": "国際的なオーガニック化粧品認証\n天然由来成分95%以上を保証", "badgeKey": "cosmos" },
-    "cert2": { "title": "ノンシリコン処方", "body": "シリコン不使用で髪本来の健康を守る\n長期使用でも蓄積ダメージなし", "badgeKey": "nonSilicone" },
+    "cert1": {
+      "title": "COSMOS ORGANIC認証",
+      "body": "国際的なオーガニック化粧品認証\n天然由来成分95%以上を保証",
+      "badgeKey": "cosmos"
+    },
+    "cert2": {
+      "title": "ノンシリコン処方",
+      "body": "シリコン不使用で髪本来の健康を守る\n長期使用でも蓄積ダメージなし",
+      "badgeKey": "nonSilicone"
+    },
     "keyMsg": "オーガニック認証+ノンシリコンで安心品質"
   },
   "comparison": {
-    "headers": ["スペック項目", "本企画", "N.(エヌドット)", "MOROCCANOIL"],
+    "headers": [
+      "スペック項目",
+      "本企画",
+      "N.(エヌドット)",
+      "MOROCCANOIL"
+    ],
     "rows": [
-      ["主成分", "アルガン+ホホバ", "シアバター", "アルガン"],
-      ["ノンシリコン", "○", "×", "×"],
-      ["容量", "100ml", "150ml", "100ml"],
-      ["ヒートプロテクト", "○", "×", "○"],
-      ["販売価格", "3千~5千円", "3千~4千円", "4千~5千円"]
+      [
+        "主成分",
+        "アルガン+ホホバ",
+        "シアバター",
+        "アルガン"
+      ],
+      [
+        "ノンシリコン",
+        "○",
+        "×",
+        "×"
+      ],
+      [
+        "容量",
+        "100ml",
+        "150ml",
+        "100ml"
+      ],
+      [
+        "ヒートプロテクト",
+        "○",
+        "×",
+        "○"
+      ],
+      [
+        "販売価格",
+        "3千~5千円",
+        "3千~4千円",
+        "4千~5千円"
+      ]
     ],
     "keyMsg": "N.・モロッカンオイル同等品質を同価格帯で"
   },
   "production": {
     "headline": "国内GMP工場で製造",
-    "block1": { "title": "製造工場", "body": "国内のGMP認定化粧品工場\n大手メーカーのOEM実績多数" },
-    "block2": { "title": "品質管理", "body": "全ロット検査+安定性試験を実施\nアレルギーテスト済み" },
-    "imgKey": "labCosmetic",
+    "block1": {
+      "title": "製造工場",
+      "body": "国内のGMP認定化粧品工場\n大手メーカーのOEM実績多数"
+    },
+    "block2": {
+      "title": "品質管理",
+      "body": "全ロット検査+安定性試験を実施\nアレルギーテスト済み"
+    },
+    "imgKey": "glassBottle",
     "callout": "サンプル到着後、実物での撮影が可能です",
     "keyMsg": "国内GMP工場で製造。全ロット検査済み"
   },
   "design": {
     "header": "パッケージデザイン",
     "benchmark": "N.をベンチマーク",
-    "imgKey": "dropper",
+    "imgKey": "serumBottle",
     "specs": [
-      { "text": "スポイト式で1回の使用量を調整しやすい", "sub": ["1. ショートヘア: 1プッシュ", "2. ロングヘア: 2-3プッシュ"] },
-      { "text": "高級感のあるマットガラスボトル", "note": "（洗面台に置いても映えるデザイン）" },
-      { "text": "コンパクトサイズで旅行にも持ち運び可能" }
+      {
+        "text": "スポイト式で1回の使用量を調整しやすい",
+        "sub": [
+          "1. ショートヘア: 1プッシュ",
+          "2. ロングヘア: 2-3プッシュ"
+        ]
+      },
+      {
+        "text": "高級感のあるマットガラスボトル",
+        "note": "（洗面台に置いても映えるデザイン）"
+      },
+      {
+        "text": "コンパクトサイズで旅行にも持ち運び可能"
+      }
     ],
     "keyMsg": "スポイト式+マットガラスで高見えデザイン"
   },
   "variations": {
     "header": "ラインナップ",
-    "imgKey": "serumBottle",
+    "imgKey": "hairProducts",
     "summary": "3タイプ展開想定",
     "items": [
-      { "label": "スタンダード(100ml)", "detail": "万能タイプ。朝晩のケアに" },
-      { "label": "ライト(100ml)", "detail": "細い髪・猫っ毛向けの軽い仕上がり" },
-      { "label": "リッチ(50ml)", "detail": "ダメージ毛向けの集中補修タイプ" }
+      {
+        "label": "スタンダード(100ml)",
+        "detail": "万能タイプ。朝晩のケアに"
+      },
+      {
+        "label": "ライト(100ml)",
+        "detail": "細い髪・猫っ毛向けの軽い仕上がり"
+      },
+      {
+        "label": "リッチ(50ml)",
+        "detail": "ダメージ毛向けの集中補修タイプ"
+      }
     ],
     "keyMsg": "3タイプ展開で髪質に合わせて選べる"
   },
   "sales": {
     "headline": "シャンプーとのクロスセルで売上最大化",
     "strategies": [
-      { "title": "ヘアケアルーティン動画", "desc": "朝のスタイリングにオイルを使う様子をReelsで" },
-      { "title": "シャンプーとのセット販売", "desc": "既存シャンプーユーザーにセット割引で訴求" },
-      { "title": "購入特典: ミニサイズ3本セット", "desc": "お試しサイズで3タイプ全て試せる" }
+      {
+        "title": "ヘアケアルーティン動画",
+        "desc": "朝のスタイリングにオイルを使う様子をReelsで"
+      },
+      {
+        "title": "シャンプーとのセット販売",
+        "desc": "既存シャンプーユーザーにセット割引で訴求"
+      },
+      {
+        "title": "購入特典: ミニサイズ3本セット",
+        "desc": "お試しサイズで3タイプ全て試せる"
+      }
     ],
-    "topImg": "womanHair",
-    "bottomImg": "cosmeticFlatlay",
+    "topImg": "hairBack",
+    "bottomImg": "bathroomShelf",
     "keyMsg": "シャンプーとのセット販売+Reels連動で拡販"
   },
   "schedule": {
     "rows": [
-      ["4月", "企画・処方確定", "成分配合と香りの最終決定"],
-      ["5月", "試作・安定性試験", "試作品の安定性テスト"],
-      ["6月", "パッケージデザイン確定", "ボトル・ラベルデザイン"],
-      ["7月", "量産", "GMP工場で量産開始"],
-      ["8月", "製品納品・検品", "全ロット検査実施"],
-      ["9月", "プロモーション撮影", "鈴木亜美さんのヘアケア撮影"],
-      ["10月", "リリース", "EC販売+シャンプーとのセット販売開始"]
+      [
+        "4月",
+        "企画・処方確定",
+        "成分配合と香りの最終決定"
+      ],
+      [
+        "5月",
+        "試作・安定性試験",
+        "試作品の安定性テスト"
+      ],
+      [
+        "6月",
+        "パッケージデザイン確定",
+        "ボトル・ラベルデザイン"
+      ],
+      [
+        "7月",
+        "量産",
+        "GMP工場で量産開始"
+      ],
+      [
+        "8月",
+        "製品納品・検品",
+        "全ロット検査実施"
+      ],
+      [
+        "9月",
+        "プロモーション撮影",
+        "鈴木亜美さんのヘアケア撮影"
+      ],
+      [
+        "10月",
+        "リリース",
+        "EC販売+シャンプーとのセット販売開始"
+      ]
     ],
     "note": "※シャンプーとの同時プロモーションを想定",
     "keyMsg": "4月企画 → 10月リリースの製造スケジュール"
   },
   "projection": {
     "rows": [
-      ["販売価格", "3,000-5,000円", "タイプ・容量によって変動"],
-      ["販売時期", "10月", "秋冬ヘアケア需要に合わせて"],
-      ["主成分", "アルガン+ホホバ", "天然由来95%以上"],
-      ["品質", "ノンシリコン+オーガニック", "GMP工場製造"],
-      ["販売戦略", "シャンプーとのセット販売", "既存顧客への横展開"],
-      ["ラインナップ", "3タイプ", "スタンダード・ライト・リッチ"],
-      ["生産数", "3,000-10,000本", "初回ロット想定"],
-      ["売上想定", "900万-5,000万円", "販売価格3千-5千円で算出"]
+      [
+        "販売価格",
+        "3,000-5,000円",
+        "タイプ・容量によって変動"
+      ],
+      [
+        "販売時期",
+        "10月",
+        "秋冬ヘアケア需要に合わせて"
+      ],
+      [
+        "主成分",
+        "アルガン+ホホバ",
+        "天然由来95%以上"
+      ],
+      [
+        "品質",
+        "ノンシリコン+オーガニック",
+        "GMP工場製造"
+      ],
+      [
+        "販売戦略",
+        "シャンプーとのセット販売",
+        "既存顧客への横展開"
+      ],
+      [
+        "ラインナップ",
+        "3タイプ",
+        "スタンダード・ライト・リッチ"
+      ],
+      [
+        "生産数",
+        "3,000-10,000本",
+        "初回ロット想定"
+      ],
+      [
+        "売上想定",
+        "900万-5,000万円",
+        "販売価格3千-5千円で算出"
+      ]
     ],
     "keyMsg": "売上想定900万〜5,000万円のポテンシャル"
   }
