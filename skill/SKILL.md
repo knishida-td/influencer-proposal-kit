@@ -127,14 +127,17 @@ const FONT = "Hiragino Kaku Gothic Pro W3";
 
 ## 参照スクリプト
 
-実績のある生成スクリプト（構造の参考として使用）:
-- `/Users/nishidakeisuke/Projects/influencer-proposal-kit/generate.js` — ダウンジャケット(ベンチマーク)
-- `/Users/nishidakeisuke/Projects/influencer-proposal-kit/generate-v2.js` — レザーミニバッグ
-- `/Users/nishidakeisuke/Projects/influencer-proposal-kit/generate-v3.js` — ナイロントート
-- `/Users/nishidakeisuke/Projects/influencer-proposal-kit/generate-v4.js` — ヘアオイル
-- `/Users/nishidakeisuke/Projects/influencer-proposal-kit/generate-v5.js` — 万能調味料
+ジャンル別テンプレート（`templates/`ディレクトリ）:
 
-新規作成時は最も商材が近いスクリプトをベースにコピーし、内容を差し替える。
+| ファイル | ジャンル | 商材例 |
+|---------|--------|-------|
+| `fashion-jacket.js` | ファッション(アウター) | ダウンジャケット |
+| `fashion-bag.js` | ファッション(バッグ) | レザーミニバッグ |
+| `fashion-tote.js` | ファッション(バッグ/ママ向け) | ナイロントート |
+| `beauty-hairoil.js` | ビューティー | ヘアオイル |
+| `food-seasoning.js` | 食品 | 万能調味料 |
+
+新規作成時は最も商材が近いテンプレートをコピーし、内容を差し替える。
 
 ## KeyMsg 28文字ルール
 
