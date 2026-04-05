@@ -40,9 +40,9 @@ function getImageDimensions(filePath) {
 // SlideKit Design System
 // =============================================================
 const C = {
-  bg: "F5F5F5", title: "222222", body: "333333", sub: "666666", muted: "AAAAAA",
-  primary: "EF4823", secondary: "FCBF17", kmBg: "FFF5F0", sep: "EEEEEE",
-  divider: "DDDDDD", white: "FFFFFF",
+  bg: "111111", title: "FFFFFF", body: "E0E0E0", sub: "AAAAAA", muted: "666666",
+  primary: "C9A96E", secondary: "E8D5B0", kmBg: "1F1A14", sep: "333333",
+  divider: "333333", white: "FFFFFF",
 };
 const FONT = "Hiragino Kaku Gothic Pro W3";
 const SW = 10, SH = 5.625;
@@ -476,7 +476,7 @@ async function main() {
     dataRows.forEach((row, ri) => {
       const ry = top + hdrH + ri * rowH;
       if (ri % 2 === 0) {
-        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: C.white } });
+        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: "1A1A1A" } });
       }
       row.forEach((cell, ci) => {
         s.addText(cell, {
@@ -774,7 +774,7 @@ async function main() {
     dataRows.forEach((row, ri) => {
       const ry = top + hdrH + ri * rowH;
       if (ri % 2 === 0) {
-        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: C.white } });
+        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: "1A1A1A" } });
       }
       row.forEach((cell, ci) => {
         s.addText(cell, {
@@ -839,7 +839,7 @@ async function main() {
     dataRows.forEach((row, ri) => {
       const ry = top + hdrH + ri * rowH;
       if (ri % 2 === 0) {
-        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: C.white } });
+        s.addShape(pres.shapes.RECTANGLE, { x: 0.5, y: ry, w: 9.0, h: rowH, fill: { color: "1A1A1A" } });
       }
       row.forEach((cell, ci) => {
         s.addText(cell, {
