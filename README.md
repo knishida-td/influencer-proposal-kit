@@ -58,4 +58,14 @@ SlideKit準拠（claude-pptx-mcp と同一のデザインシステム）。
 - Claude Code アカウント
 - Node.js 18+
 - pptx MCPサーバー（`curl -fsSL https://raw.githubusercontent.com/knishida-td/claude-pptx-mcp/main/install.sh | bash`）
-- Rube (Composio) Google Drive連携（Google Slidesアップロード用）
+
+### Google Slides自動アップロード（任意）
+
+GAS Webアプリをデプロイすると、生成したPPTXを自動でGoogle Slidesにアップロードできます。
+
+1. `gas/upload-to-slides.gs` をGoogle Apps Scriptにコピー
+2. Drive APIサービスを有効化（エディタ → サービス → Drive API）
+3. デプロイ → ウェブアプリ → アクセス: 全員 → デプロイ
+4. URLを設定: `echo 'GAS_UPLOAD_URL="https://script.google.com/macros/s/xxxxx/exec"' > ~/.config/influencer-proposal-kit/config`
+
+未設定でも提案書の生成自体は可能です（手動でGoogle Driveにアップロード）。

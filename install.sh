@@ -91,7 +91,27 @@ else
   echo "  CLAUDE.md にルールは設定済みです"
 fi
 
-# ── 6. pptx MCP サーバーの確認 ──
+# ── 6. アップロードスクリプトのインストール ──
+install_file "upload-to-gslides.sh" "scripts/upload-to-gslides.sh" "$PROJECT_DIR/scripts/upload-to-gslides.sh" || true
+chmod +x "$PROJECT_DIR/scripts/upload-to-gslides.sh" 2>/dev/null || true
+
+# ── 7. GAS設定の確認 ──
+CONFIG_DIR="$HOME/.config/influencer-proposal-kit"
+CONFIG_FILE="$CONFIG_DIR/config"
+mkdir -p "$CONFIG_DIR"
+
+if [ -f "$CONFIG_FILE" ] && grep -q "GAS_UPLOAD_URL" "$CONFIG_FILE" 2>/dev/null; then
+  echo "  Google Slidesアップロード設定済みです"
+else
+  echo ""
+  echo "  Google Slides自動アップロードの設定（任意）:"
+  echo "  1. gas/upload-to-slides.gs をGoogle Apps Scriptにデプロイ"
+  echo "  2. 以下を実行:"
+  echo '     echo '\''GAS_UPLOAD_URL="https://script.google.com/macros/s/xxxxx/exec"'\'' > '"$CONFIG_FILE"
+  echo "  ※未設定でも提案書の生成自体は可能です（手動アップロード）"
+fi
+
+# ── 8. pptx MCP サーバーの確認 ──
 SETTINGS_FILE="$HOME/.claude/settings.json"
 if [ -f "$SETTINGS_FILE" ] && grep -q "claude-pptx-mcp\|pptx" "$SETTINGS_FILE" 2>/dev/null; then
   echo "  pptx MCPサーバーは設定済みです"
@@ -100,11 +120,6 @@ else
   echo "  PPTX生成にはpptx MCPサーバーも必要です。未設定の場合:"
   echo "  curl -fsSL https://raw.githubusercontent.com/knishida-td/claude-pptx-mcp/main/install.sh | bash"
 fi
-
-# ── 7. Rube (Google Drive連携) の確認 ──
-echo ""
-echo "  Google Slides自動アップロードにはRube (Composio) のGoogle Drive連携が必要です。"
-echo "  未設定の場合はClaude Code内でRubeのGoogle Drive認証を実行してください。"
 
 echo ""
 echo "=== インストール完了 ==="

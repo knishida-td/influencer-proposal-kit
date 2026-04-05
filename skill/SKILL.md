@@ -65,9 +65,9 @@ description: "インフルエンサー向け商品コラボ提案資料を生成
    └─ 問題あれば修正して再生成
 
 6. Google Slidesアップロード
-   ├─ tmpfiles.orgにPPTXアップロード
-   ├─ RUBE GOOGLEDRIVE_UPLOAD_FROM_URL でGoogle Driveにアップ
-   │  mime_type: "application/vnd.google-apps.presentation"
+   ├─ scripts/upload-to-gslides.sh でGoogle Driveにアップ
+   │  （GAS WebアプリにBase64送信 → Google Slides変換）
+   ├─ GAS未設定の場合は `open` でファイルを開いて手動案内
    └─ URLをユーザーに返却
 ```
 
