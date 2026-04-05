@@ -1,0 +1,295 @@
+{
+  "id": "tumbler-naruse",
+  "title": "ステンレスタンブラー",
+  "output": "/tmp/tumbler-proposal.pptx",
+  "imageDir": "/tmp/tumbler-images",
+  "images": {
+    "waterBottle": "water-bottle.jpg",
+    "coffeeCup": "coffee-cup.jpg",
+    "steelTexture": "steel-texture.jpg",
+    "morningCoffee": "morning-coffee.jpg",
+    "deskWorkspace": "desk-workspace.jpg",
+    "teaLeaves": "tea-leaves.jpg",
+    "pastelCups": "pastel-cups.jpg",
+    "iceDrink": "ice-drink.jpg",
+    "factorySteel": "factory-steel.jpg",
+    "giftWrap": "gift-wrap2.jpg",
+    "thermosLid": "thermos-lid.jpg",
+    "parkBench": "park-bench.jpg"
+  },
+  "badges": {
+    "foodSafety": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><rect width='300' height='300' rx='150' fill='#1B3A5C'/><circle cx='150' cy='150' r='120' fill='none' stroke='#A8C4E0' stroke-width='4'/><text x='150' y='110' text-anchor='middle' fill='#A8C4E0' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>食品衛生法</text><text x='150' y='145' text-anchor='middle' fill='#E8F0F8' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>適合</text><text x='150' y='180' text-anchor='middle' fill='#A8C4E0' font-family='Helvetica,Arial' font-size='12'>FOOD SAFETY</text><text x='150' y='200' text-anchor='middle' fill='#A8C4E0' font-family='Helvetica,Arial' font-size='12'>CERTIFIED</text></svg>",
+    "bpaFree": "<svg width='280' height='280' xmlns='http://www.w3.org/2000/svg'><rect width='280' height='280' rx='140' fill='#1B4D2E'/><circle cx='140' cy='100' r='40' fill='none' stroke='#A5D6A7' stroke-width='3'/><text x='140' y='108' text-anchor='middle' fill='#A5D6A7' font-family='Helvetica,Arial' font-size='32' font-weight='bold'>✓</text><text x='140' y='170' text-anchor='middle' fill='#E8F5E9' font-family='Helvetica,Arial' font-size='20' font-weight='bold'>BPAフリー</text><text x='140' y='200' text-anchor='middle' fill='#A5D6A7' font-family='Helvetica,Arial' font-size='12'>BPA FREE</text><text x='140' y='230' text-anchor='middle' fill='#81C784' font-family='Helvetica,Arial' font-size='10'>CERTIFIED</text></svg>"
+  },
+  "cover": {
+    "leftImg": "coffeeCup",
+    "rightImg": "iceDrink",
+    "title": "ステンレス\nタンブラー"
+  },
+  "concept": {
+    "headline": "「いつもの一杯」を特別にするタンブラー",
+    "body": "プチプラだけど毎日使うものにはこだわりたいママへ。保温も保冷もこの1本で。",
+    "matchLabel": "成瀬愛里さんとの相性:",
+    "points": [
+      "プチプラ×高見えの世界観にぴったり",
+      "朝のコーヒーや子供の送迎時に毎日使える",
+      "料理投稿の背景にもなじむデザイン"
+    ],
+    "keyMsg": "プチプラ×高見え×毎日使えるタンブラー"
+  },
+  "overview": {
+    "headline": "保温も保冷もこの1本で",
+    "leftImg": "waterBottle",
+    "rightImg": "morningCoffee",
+    "features": [
+      "真空断熱二重構造で保温6h保冷12h",
+      "BPAフリーで子供が触れても安心",
+      "蓋付きでバッグに入れても漏れない",
+      "食洗機対応でお手入れ簡単",
+      "350mlでちょうどいいサイズ",
+      "マットカラーで指紋が目立たない"
+    ],
+    "keyMsg": "真空断熱×BPAフリー×食洗機対応タンブラー"
+  },
+  "materials": {
+    "header": "素材・機能性",
+    "headline": "毎日使うものだから素材にこだわる",
+    "cards": [
+      {
+        "title": "SUS304ステンレス",
+        "sub": "医療グレード",
+        "imgKey": "steelTexture",
+        "desc": "医療グレードのステンレス\nサビに強く衛生的\n金属臭が移りにくい"
+      },
+      {
+        "title": "真空断熱二重構造",
+        "sub": "保温保冷",
+        "imgKey": "thermosLid",
+        "desc": "保温6時間・保冷12時間\n結露しないから\nデスクの書類も安心"
+      },
+      {
+        "title": "BPAフリー蓋",
+        "sub": "環境ホルモン不使用",
+        "imgKey": "teaLeaves",
+        "desc": "環境ホルモン不使用\n子供が触れても安心\nシリコンパッキンで密閉"
+      }
+    ],
+    "keyMsg": "SUS304+真空断熱+BPAフリーの安心素材"
+  },
+  "quality": {
+    "cert1": {
+      "title": "食品衛生法適合",
+      "body": "食品衛生法に基づく安全基準をクリア\n飲料容器としての安全性を第三者機関が認証",
+      "badgeKey": "foodSafety"
+    },
+    "cert2": {
+      "title": "BPAフリー認証",
+      "body": "蓋・パッキンにBPA(ビスフェノールA)不使用\n環境ホルモンフリーで子供にも安心",
+      "badgeKey": "bpaFree"
+    },
+    "keyMsg": "食品衛生法適合+BPAフリーで安心品質"
+  },
+  "comparison": {
+    "headers": [
+      "スペック項目",
+      "本企画",
+      "STANLEY",
+      "サーモス"
+    ],
+    "rows": [
+      [
+        "保温",
+        "6h",
+        "7h",
+        "6h"
+      ],
+      [
+        "保冷",
+        "12h",
+        "11h",
+        "6h"
+      ],
+      [
+        "食洗機",
+        "○",
+        "△(手洗い推奨)",
+        "○"
+      ],
+      [
+        "容量",
+        "350ml",
+        "470ml",
+        "350ml"
+      ],
+      [
+        "販売価格",
+        "2千~3千円",
+        "5千~7千円",
+        "2千~4千円"
+      ]
+    ],
+    "keyMsg": "保冷12h×食洗機OK×低価格は本企画だけ"
+  },
+  "production": {
+    "headline": "中国提携工場+国内全数検品",
+    "block1": {
+      "title": "製造工場",
+      "body": "大手メーカーOEM実績のある中国工場\n月産10万本の生産体制"
+    },
+    "block2": {
+      "title": "国内検品",
+      "body": "食品衛生法検査+耐久テスト\n漏れ検査・保温性能テストを全数実施"
+    },
+    "imgKey": "factorySteel",
+    "callout": "サンプルでの使用テストが可能です",
+    "keyMsg": "提携工場製造+国内全数検品で安心品質"
+  },
+  "design": {
+    "header": "パッケージデザイン",
+    "benchmark": "STANLEYをベンチマーク",
+    "imgKey": "deskWorkspace",
+    "specs": [
+      {
+        "text": "スクリュー蓋+飲み口付きの2WAY設計",
+        "sub": [
+          "1. デスクでは飲み口から",
+          "2. 移動中はスクリュー蓋で密閉"
+        ]
+      },
+      {
+        "text": "マットコーティングで指紋がつきにくい",
+        "note": "（SNS撮影時も清潔感を維持）"
+      },
+      {
+        "text": "底面にシリコンパッド付きで音が立たない"
+      }
+    ],
+    "keyMsg": "2WAY蓋+マットコーティング+静音設計"
+  },
+  "variations": {
+    "header": "ラインナップ",
+    "imgKey": "pastelCups",
+    "summary": "3色展開想定",
+    "items": [
+      {
+        "label": "ミルクホワイト",
+        "detail": "どんなコーデにも合うベーシック"
+      },
+      {
+        "label": "くすみピンク",
+        "detail": "ママに人気のニュアンスカラー"
+      },
+      {
+        "label": "モカグレー",
+        "detail": "通勤にも使えるシック色"
+      }
+    ],
+    "keyMsg": "ホワイト x ピンク x グレーの3色展開"
+  },
+  "sales": {
+    "headline": "毎日の飲み物投稿で自然露出",
+    "strategies": [
+      {
+        "title": "朝のコーヒータイム投稿にタンブラー",
+        "desc": "日常の一コマとして自然にPR"
+      },
+      {
+        "title": "「マイタンブラーで節約」Reels",
+        "desc": "プチプラ×エコの訴求"
+      },
+      {
+        "title": "購入特典:ステンレスストロー付き",
+        "desc": "タンブラーと一緒に使えるエコアイテム"
+      }
+    ],
+    "topImg": "parkBench",
+    "bottomImg": "giftWrap",
+    "keyMsg": "飲み物投稿+Reels+エコ特典で拡販"
+  },
+  "schedule": {
+    "rows": [
+      [
+        "4月",
+        "デザイン確定",
+        "カラー・形状の最終決定"
+      ],
+      [
+        "5月",
+        "サンプル製作",
+        "提携工場でサンプル製作"
+      ],
+      [
+        "6月",
+        "サンプル確認",
+        "使用テスト・デザイン確認"
+      ],
+      [
+        "7月",
+        "量産",
+        "提携工場で量産開始"
+      ],
+      [
+        "8月",
+        "検品",
+        "国内全数検品実施"
+      ],
+      [
+        "9月",
+        "撮影",
+        "成瀬さんのプロモーション撮影"
+      ],
+      [
+        "10月",
+        "リリース",
+        "EC販売+Instagram連動開始"
+      ]
+    ],
+    "note": "※秋冬の温かい飲み物需要に合わせて",
+    "keyMsg": "4月デザイン → 10月リリースの製造スケジュール"
+  },
+  "projection": {
+    "rows": [
+      [
+        "販売価格",
+        "2千-3千円",
+        "カラーによる変動なし"
+      ],
+      [
+        "販売時期",
+        "10月",
+        "秋冬の温かい飲み物需要に合わせて"
+      ],
+      [
+        "原材料",
+        "SUS304ステンレス",
+        "医療グレードのステンレス"
+      ],
+      [
+        "品質",
+        "食品衛生法+BPAフリー",
+        "国内全数検品体制"
+      ],
+      [
+        "販売戦略",
+        "飲み物投稿連動",
+        "32万フォロワーへの自然露出"
+      ],
+      [
+        "ラインナップ",
+        "3色",
+        "ホワイト・ピンク・グレー"
+      ],
+      [
+        "生産数",
+        "3,000-10,000個",
+        "初回ロット想定"
+      ],
+      [
+        "売上想定",
+        "600万-3,000万円",
+        "販売価格2千-3千円で算出"
+      ]
+    ],
+    "keyMsg": "売上想定600万〜3,000万円のポテンシャル"
+  }
+}

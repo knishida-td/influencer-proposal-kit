@@ -1,0 +1,295 @@
+{
+  "id": "bodymist-suzuki",
+  "title": "ボディミスト",
+  "output": "/tmp/bodymist-proposal.pptx",
+  "imageDir": "/tmp/bodymist-images",
+  "images": {
+    "perfumeBottle": "perfume-bottle.jpg",
+    "sprayMist": "spray-mist.jpg",
+    "rosePetals": "rose-petals.jpg",
+    "cosmeticShelf": "cosmetic-shelf.jpg",
+    "flowerField": "flower-field.jpg",
+    "labTest": "lab-test.jpg",
+    "giftRibbon": "gift-ribbon.jpg",
+    "citrusFruit": "citrus-fruit.jpg",
+    "vanityTable": "vanity-table.jpg",
+    "cottonFlowers": "cotton-flowers.jpg",
+    "soapBar": "soap-bar.jpg",
+    "aromaCandle": "aroma-candle.jpg"
+  },
+  "badges": {
+    "ifra": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><rect width='300' height='300' rx='150' fill='#1B2A4A'/><circle cx='150' cy='150' r='120' fill='none' stroke='#8AAED0' stroke-width='4'/><text x='150' y='115' text-anchor='middle' fill='#8AAED0' font-family='Helvetica,Arial' font-size='22' font-weight='bold'>IFRA</text><text x='150' y='145' text-anchor='middle' fill='#E8F0F8' font-family='Helvetica,Arial' font-size='16' font-weight='bold'>フレグランス安全基準</text><text x='150' y='175' text-anchor='middle' fill='#8AAED0' font-family='Helvetica,Arial' font-size='12'>CERTIFIED</text></svg>",
+    "allergyTest": "<svg width='280' height='280' xmlns='http://www.w3.org/2000/svg'><rect width='280' height='280' rx='140' fill='#5A5A5A'/><circle cx='140' cy='100' r='40' fill='none' stroke='#70C4B0' stroke-width='3'/><text x='140' y='108' text-anchor='middle' fill='#70C4B0' font-family='Helvetica,Arial' font-size='32' font-weight='bold'>✓</text><text x='140' y='165' text-anchor='middle' fill='#E8F5F0' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>アレルギー</text><text x='140' y='190' text-anchor='middle' fill='#E8F5F0' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>テスト済</text><text x='140' y='225' text-anchor='middle' fill='#70C4B0' font-family='Helvetica,Arial' font-size='10'>CERTIFIED</text></svg>"
+  },
+  "cover": {
+    "leftImg": "perfumeBottle",
+    "rightImg": "flowerField",
+    "title": "ボディミスト"
+  },
+  "concept": {
+    "headline": "「纏う香り」でセルフケアを完成させる",
+    "body": "シャンプー+ヘアオイルに続くビューティ第3弾。毎日のケアを香りで仕上げるフレグランスミスト。",
+    "matchLabel": "亜美さんとの相性:",
+    "points": [
+      "シャンプー・ヘアオイルとの世界観統一",
+      "セレブ感のある香りの演出",
+      "ギフト需要が高い商材"
+    ],
+    "keyMsg": "シャンプー+ヘアオイル+ミストで世界観統一"
+  },
+  "overview": {
+    "headline": "ひと吹きで気分が上がるフレグランスミスト",
+    "leftImg": "sprayMist",
+    "rightImg": "citrusFruit",
+    "features": [
+      "天然精油ベースの優しい香り",
+      "アルコールフリーで肌に直接OK",
+      "髪・服・空間にも使えるマルチ仕様",
+      "持ち運びやすい50mlサイズ",
+      "ローズ&ジャスミンの華やかな香り",
+      "パラベン・合成着色料フリー"
+    ],
+    "keyMsg": "天然精油×アルコールフリーの肌に優しいミスト"
+  },
+  "materials": {
+    "header": "成分・機能性",
+    "headline": "肌にも優しい天然由来処方",
+    "cards": [
+      {
+        "title": "天然精油ブレンド",
+        "sub": "調香師監修",
+        "imgKey": "rosePetals",
+        "desc": "厳選した天然精油をブレンド\n調香師が監修した本格的な香り\n合成香料不使用で肌に優しい"
+      },
+      {
+        "title": "保湿成分配合",
+        "sub": "ヒアルロン酸Na",
+        "imgKey": "cosmeticShelf",
+        "desc": "ヒアルロン酸Na配合\n香りと同時にうるおいもプラス\n乾燥が気になる季節にも"
+      },
+      {
+        "title": "アルコールフリー",
+        "sub": "敏感肌対応",
+        "imgKey": "soapBar",
+        "desc": "アルコール不使用\n敏感肌の方にも安心\n刺激を抑えた処方設計"
+      }
+    ],
+    "keyMsg": "天然精油+保湿成分+アルコールフリー処方"
+  },
+  "quality": {
+    "cert1": {
+      "title": "IFRA準拠",
+      "body": "国際フレグランス協会の安全基準に準拠\n使用する香料はすべてIFRA基準をクリア",
+      "badgeKey": "ifra"
+    },
+    "cert2": {
+      "title": "アレルギーテスト済み",
+      "body": "第三者機関によるアレルギーテスト実施済み\n敏感肌の方にも安心してお使いいただけます",
+      "badgeKey": "allergyTest"
+    },
+    "keyMsg": "IFRA準拠+アレルギーテスト済みで安心品質"
+  },
+  "comparison": {
+    "headers": [
+      "スペック項目",
+      "本企画",
+      "SHIRO",
+      "Jo Malone"
+    ],
+    "rows": [
+      [
+        "天然精油",
+        "○",
+        "一部合成",
+        "一部合成"
+      ],
+      [
+        "アルコールフリー",
+        "○",
+        "×",
+        "×"
+      ],
+      [
+        "容量",
+        "50ml",
+        "100ml",
+        "30ml"
+      ],
+      [
+        "マルチ使用",
+        "○(肌・髪・空間)",
+        "×(肌のみ)",
+        "×(肌のみ)"
+      ],
+      [
+        "販売価格",
+        "2千~4千円",
+        "4千~5千円",
+        "8千~1.5万円"
+      ]
+    ],
+    "keyMsg": "天然精油×アルコールフリー×低価格は本企画だけ"
+  },
+  "production": {
+    "headline": "国内化粧品GMP工場で製造",
+    "block1": {
+      "title": "製造工場",
+      "body": "国内の化粧品GMP認定工場\nフレグランス製品の製造実績豊富"
+    },
+    "block2": {
+      "title": "品質管理",
+      "body": "原料の安全性検査を全ロット実施\n安定性試験・微生物検査も実施"
+    },
+    "imgKey": "labTest",
+    "callout": "サンプルの香りテストが可能です",
+    "keyMsg": "国内GMP工場で製造。安全性試験済み"
+  },
+  "design": {
+    "header": "パッケージデザイン",
+    "benchmark": "SHIROをベンチマーク",
+    "imgKey": "vanityTable",
+    "specs": [
+      {
+        "text": "ミストポンプ式で均一に広がる",
+        "sub": [
+          "1. 顔周りにも使える細かいミスト",
+          "2. 衣服のシミになりにくい"
+        ]
+      },
+      {
+        "text": "50mlのコンパクトボトル",
+        "note": "（ポーチに入る持ち運びサイズ）"
+      },
+      {
+        "text": "マットホワイトのミニマルデザイン"
+      }
+    ],
+    "keyMsg": "ミストポンプ式+コンパクト+ミニマルデザイン"
+  },
+  "variations": {
+    "header": "ラインナップ",
+    "imgKey": "aromaCandle",
+    "summary": "3香展開想定",
+    "items": [
+      {
+        "label": "ローズ&ジャスミン",
+        "detail": "華やかフローラル。デートや特別な日に"
+      },
+      {
+        "label": "シトラス&ネロリ",
+        "detail": "爽やかな柑橘系。朝のリフレッシュに"
+      },
+      {
+        "label": "ラベンダー&カモミール",
+        "detail": "リラックス系。就寝前のケアに"
+      }
+    ],
+    "keyMsg": "フローラル x シトラス x リラックスの3香"
+  },
+  "sales": {
+    "headline": "シャンプー+ヘアオイルとの三点セットで訴求",
+    "strategies": [
+      {
+        "title": "ヘアケアルーティンの最後にミスト",
+        "desc": "朝の支度Reelsで香りの提案"
+      },
+      {
+        "title": "シャンプー・オイルとの3点セット販売",
+        "desc": "既存顧客にアップセル"
+      },
+      {
+        "title": "購入特典:ミニサイズ全3香セット",
+        "desc": "お試しで全香り体験"
+      }
+    ],
+    "topImg": "cottonFlowers",
+    "bottomImg": "giftRibbon",
+    "keyMsg": "ヘアケアルーティン+3点セット+特典で拡販"
+  },
+  "schedule": {
+    "rows": [
+      [
+        "4月",
+        "企画・調香",
+        "香りの方向性と調香師との打合せ"
+      ],
+      [
+        "5月",
+        "試作・安定性試験",
+        "試作品の安定性試験実施"
+      ],
+      [
+        "6月",
+        "パッケージデザイン",
+        "ボトル・ラベルデザイン確定"
+      ],
+      [
+        "7月",
+        "量産",
+        "GMP工場で量産開始"
+      ],
+      [
+        "8月",
+        "検品",
+        "全ロット品質検査実施"
+      ],
+      [
+        "9月",
+        "撮影",
+        "亜美さんのプロモーション撮影"
+      ],
+      [
+        "10月",
+        "リリース",
+        "EC販売+Instagram連動開始"
+      ]
+    ],
+    "note": "※シャンプー・ヘアオイルとの同時プロモーション",
+    "keyMsg": "4月企画 → 10月リリースの製造スケジュール"
+  },
+  "projection": {
+    "rows": [
+      [
+        "販売価格",
+        "2千-4千円",
+        "香りによって変動"
+      ],
+      [
+        "販売時期",
+        "10月",
+        "秋冬の香り需要に合わせて"
+      ],
+      [
+        "原材料",
+        "天然精油ベース",
+        "アルコールフリー処方"
+      ],
+      [
+        "品質",
+        "GMP工場+アレルギーテスト",
+        "IFRA準拠の安全基準"
+      ],
+      [
+        "販売戦略",
+        "3点セット訴求",
+        "シャンプー+オイルとのセット販売"
+      ],
+      [
+        "ラインナップ",
+        "3香",
+        "フローラル・シトラス・リラックス"
+      ],
+      [
+        "生産数",
+        "3,000-10,000本",
+        "初回ロット想定"
+      ],
+      [
+        "売上想定",
+        "600万-4,000万円",
+        "販売価格2千-4千円で算出"
+      ]
+    ],
+    "keyMsg": "売上想定600万〜4,000万円のポテンシャル"
+  }
+}

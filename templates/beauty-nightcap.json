@@ -1,0 +1,295 @@
+{
+  "id": "nightcap-suzuki",
+  "title": "シルクナイトキャップ",
+  "output": "/tmp/nightcap-proposal.pptx",
+  "imageDir": "/tmp/nightcap-images",
+  "images": {
+    "silkFabric": "silk-fabric.jpg",
+    "pillowBed": "pillow-bed.jpg",
+    "hairBrush": "hair-brush.jpg",
+    "fabricRoll": "fabric-roll.jpg",
+    "bedroomLamp": "bedroom-lamp.jpg",
+    "threadSpool": "thread-spool.jpg",
+    "ribbonBow": "ribbon-bow.jpg",
+    "skincareSet": "skincare-set.jpg",
+    "satinClose": "satin-close.jpg",
+    "lavender2": "lavender2.jpg",
+    "morningLight": "morning-light.jpg",
+    "cottonBall": "cotton-ball.jpg"
+  },
+  "badges": {
+    "oekotex": "<svg width='300' height='300' xmlns='http://www.w3.org/2000/svg'><rect width='300' height='300' rx='150' fill='#1A5C5C'/><circle cx='150' cy='150' r='120' fill='none' stroke='#80CBC4' stroke-width='4'/><text x='150' y='100' text-anchor='middle' fill='#80CBC4' font-family='Helvetica,Arial' font-size='16' font-weight='bold'>OEKO-TEX</text><text x='150' y='130' text-anchor='middle' fill='#E0F2F1' font-family='Helvetica,Arial' font-size='14' font-weight='bold'>Standard 100</text><text x='150' y='165' text-anchor='middle' fill='#80CBC4' font-family='Helvetica,Arial' font-size='12'>有害物質検査済み</text><text x='150' y='195' text-anchor='middle' fill='#80CBC4' font-family='Helvetica,Arial' font-size='10'>CERTIFIED</text></svg>",
+    "silkMark": "<svg width='280' height='280' xmlns='http://www.w3.org/2000/svg'><rect width='280' height='280' rx='140' fill='#FFF8E1'/><circle cx='140' cy='140' r='120' fill='none' stroke='#C5A044' stroke-width='4'/><text x='140' y='95' text-anchor='middle' fill='#C5A044' font-family='Helvetica,Arial' font-size='18' font-weight='bold'>SILK MARK</text><text x='140' y='130' text-anchor='middle' fill='#8B7332' font-family='Helvetica,Arial' font-size='12'>100% PURE SILK</text><text x='140' y='165' text-anchor='middle' fill='#C5A044' font-family='Helvetica,Arial' font-size='22' font-weight='bold'>絹</text><text x='140' y='200' text-anchor='middle' fill='#8B7332' font-family='Helvetica,Arial' font-size='10'>CERTIFIED</text></svg>"
+  },
+  "cover": {
+    "leftImg": "silkFabric",
+    "rightImg": "pillowBed",
+    "title": "シルク\nナイトキャップ"
+  },
+  "concept": {
+    "headline": "「寝るだけ美髪」を叶えるナイトキャップ",
+    "body": "シャンプー+ヘアオイルで整えた髪を寝ている間も守る。ヘアケアラインの「仕上げ」アイテム。",
+    "matchLabel": "亜美さんとの相性:",
+    "points": [
+      "ヘアケアラインの「仕上げ」として完璧なポジション",
+      "ナイトルーティン動画との親和性",
+      "30代ママ層の「寝ている間にケア」需要に合致"
+    ],
+    "keyMsg": "ヘアケアの仕上げ×ナイトルーティン需要"
+  },
+  "overview": {
+    "headline": "朝の髪が変わる。寝るだけヘアケア",
+    "leftImg": "hairBrush",
+    "rightImg": "satinClose",
+    "features": [
+      "6Aグレード100%天然シルク使用",
+      "摩擦を80%カット。切れ毛・枝毛を防止",
+      "保湿力が高く髪の水分を守る",
+      "ゴム跡がつかないリボンアジャスター",
+      "洗濯ネットで洗濯機OK",
+      "シャンプー・オイルの成分を寝ている間キープ"
+    ],
+    "keyMsg": "6Aシルク×摩擦80%カット×洗濯機OK"
+  },
+  "materials": {
+    "header": "素材・機能性",
+    "headline": "最高級6Aグレードシルクを贅沢に使用",
+    "cards": [
+      {
+        "title": "6Aグレードシルク",
+        "sub": "最高等級",
+        "imgKey": "fabricRoll",
+        "desc": "シルクの最高等級6A\n19匁の厚みで耐久性も確保\n肌触りはとろけるような滑らかさ"
+      },
+      {
+        "title": "リボンアジャスター",
+        "sub": "跡がつかない",
+        "imgKey": "ribbonBow",
+        "desc": "ゴム不使用でおでこに跡がつかない\nリボンで結ぶから\nサイズ調整も自由自在"
+      },
+      {
+        "title": "抗菌・防臭加工",
+        "sub": "清潔に使える",
+        "imgKey": "lavender2",
+        "desc": "天然シルクの抗菌性\nさらに防臭加工をプラス\n毎日使っても清潔"
+      }
+    ],
+    "keyMsg": "6Aシルク+リボンアジャスター+抗菌防臭"
+  },
+  "quality": {
+    "cert1": {
+      "title": "OEKO-TEX Standard 100",
+      "body": "国際的な繊維の安全基準をクリア\n有害物質検査を全ロット実施",
+      "badgeKey": "oekotex"
+    },
+    "cert2": {
+      "title": "シルクマーク認証",
+      "body": "100%天然シルク使用を第三者機関が認証\n品質と純度を保証するシルクマーク取得",
+      "badgeKey": "silkMark"
+    },
+    "keyMsg": "OEKO-TEX+シルクマーク認証で安心品質"
+  },
+  "comparison": {
+    "headers": [
+      "スペック項目",
+      "本企画",
+      "LILYSILK",
+      "無印良品"
+    ],
+    "rows": [
+      [
+        "シルク等級",
+        "6A(最高)",
+        "6A",
+        "サテン(非シルク)"
+      ],
+      [
+        "匁数",
+        "19匁",
+        "19匁",
+        "-(合成)"
+      ],
+      [
+        "アジャスター",
+        "リボン",
+        "ゴム",
+        "ゴム"
+      ],
+      [
+        "洗濯機対応",
+        "○",
+        "△(手洗い推奨)",
+        "○"
+      ],
+      [
+        "販売価格",
+        "3千~5千円",
+        "4千~6千円",
+        "2千円前後"
+      ]
+    ],
+    "keyMsg": "6Aシルク×リボン×洗濯機OKは本企画だけ"
+  },
+  "production": {
+    "headline": "シルク専門工場+国内全数検品",
+    "block1": {
+      "title": "製造工場",
+      "body": "中国蘇州のシルク専門工場\n高級シルク寝具のOEM実績多数"
+    },
+    "block2": {
+      "title": "品質検査",
+      "body": "シルク純度検査+縫製検査\nOEKO-TEX有害物質検査を全ロット実施"
+    },
+    "imgKey": "threadSpool",
+    "callout": "サンプルで実際の肌触りを確認できます",
+    "keyMsg": "シルク専門工場製造+国内全数検品で安心"
+  },
+  "design": {
+    "header": "パッケージデザイン",
+    "benchmark": "LILYSILKをベンチマーク",
+    "imgKey": "bedroomLamp",
+    "specs": [
+      {
+        "text": "リボンで結ぶエレガントなデザイン",
+        "sub": [
+          "1. 就寝中もかわいいシルエット",
+          "2. SNS映えするナイトルーティン"
+        ]
+      },
+      {
+        "text": "髪全体を包み込む深めの設計",
+        "note": "（ロングヘアでも毛先まで収まる）"
+      },
+      {
+        "text": "内側に前髪キープ用のミニクリップ付き"
+      }
+    ],
+    "keyMsg": "リボン式+深め設計+前髪クリップ付き"
+  },
+  "variations": {
+    "header": "ラインナップ",
+    "imgKey": "skincareSet",
+    "summary": "3色展開想定",
+    "items": [
+      {
+        "label": "シャンパンゴールド",
+        "detail": "高級感のある定番色"
+      },
+      {
+        "label": "ダスティローズ",
+        "detail": "女性らしいくすみピンク"
+      },
+      {
+        "label": "チャコール",
+        "detail": "シックで落ち着いた大人色"
+      }
+    ],
+    "keyMsg": "ゴールド x ローズ x チャコールの3色展開"
+  },
+  "sales": {
+    "headline": "ナイトルーティン動画で寝る前のケアを提案",
+    "strategies": [
+      {
+        "title": "ヘアケアルーティンの最後にキャップ着用",
+        "desc": "シャンプー→オイル→キャップの流れをReelsで"
+      },
+      {
+        "title": "シャンプー+オイル+キャップの3点セット",
+        "desc": "ヘアケアフルセットとして訴求"
+      },
+      {
+        "title": "購入特典:シルクスクランチー付き",
+        "desc": "同素材のスクランチーでお揃い使い"
+      }
+    ],
+    "topImg": "morningLight",
+    "bottomImg": "cottonBall",
+    "keyMsg": "ナイトルーティン+3点セット+特典で拡販"
+  },
+  "schedule": {
+    "rows": [
+      [
+        "4月",
+        "デザイン確定",
+        "カラー・形状の最終決定"
+      ],
+      [
+        "5月",
+        "サンプル製作",
+        "蘇州工場でサンプル製作"
+      ],
+      [
+        "6月",
+        "サンプル確認+着用テスト",
+        "肌触り・フィット感の確認"
+      ],
+      [
+        "7月",
+        "量産",
+        "シルク専門工場で量産開始"
+      ],
+      [
+        "8月",
+        "検品",
+        "国内全数検品実施"
+      ],
+      [
+        "9月",
+        "撮影",
+        "亜美さんのプロモーション撮影"
+      ],
+      [
+        "10月",
+        "リリース",
+        "EC販売+Instagram連動開始"
+      ]
+    ],
+    "note": "※シャンプー・ヘアオイルとの同時プロモーション",
+    "keyMsg": "4月デザイン → 10月リリースの製造スケジュール"
+  },
+  "projection": {
+    "rows": [
+      [
+        "販売価格",
+        "3千-5千円",
+        "カラーによる変動なし"
+      ],
+      [
+        "販売時期",
+        "10月",
+        "秋冬の就寝ケア需要に合わせて"
+      ],
+      [
+        "原材料",
+        "6Aグレード100%シルク",
+        "19匁の最高級シルク"
+      ],
+      [
+        "品質",
+        "OEKO-TEX+シルクマーク",
+        "国内全数検品体制"
+      ],
+      [
+        "販売戦略",
+        "ヘアケア3点セット",
+        "シャンプー+オイル+キャップのセット"
+      ],
+      [
+        "ラインナップ",
+        "3色",
+        "ゴールド・ローズ・チャコール"
+      ],
+      [
+        "生産数",
+        "2,000-8,000個",
+        "初回ロット想定"
+      ],
+      [
+        "売上想定",
+        "600万-4,000万円",
+        "販売価格3千-5千円で算出"
+      ]
+    ],
+    "keyMsg": "売上想定600万〜4,000万円のポテンシャル"
+  }
+}
