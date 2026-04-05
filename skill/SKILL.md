@@ -53,13 +53,13 @@ description: "インフルエンサー向け商品コラボ提案資料を生成
    │  → 合わない場合は再検索してDLし直す
    └─ 画像ディレクトリ: /tmp/{proposal-name}-images/
 
-4. スクリプト生成
-   ├─ テンプレート構造（後述）に従いgenerate-{name}.jsを作成
+4. テンプレートJSON生成
+   ├─ テンプレート構造（後述）に従いtemplates/{name}.jsonを作成
    ├─ 保存先: /Users/nishidakeisuke/Projects/influencer-proposal-kit/
    └─ SlideKitデザインシステム準拠（pptx Skill参照）
 
 5. PPTX生成 + QA
-   ├─ node generate-{name}.js で生成
+   ├─ node generate.js templates/{name}.json で生成
    ├─ PDF変換 → pdftoppmで画像化
    ├─ 重要スライドを目視確認（最低3枚: 表紙/素材/販売戦略）
    └─ 問題あれば修正して再生成
@@ -133,17 +133,15 @@ const FONT = "Hiragino Kaku Gothic Pro W3";
 
 ## 参照スクリプト
 
-ジャンル別テンプレート（`templates/`ディレクトリ）:
+現在のアーキテクチャ:
 
-| ファイル | ジャンル | 商材例 |
-|---------|--------|-------|
-| `fashion-jacket.js` | ファッション(アウター) | ダウンジャケット |
-| `fashion-bag.js` | ファッション(バッグ) | レザーミニバッグ |
-| `fashion-tote.js` | ファッション(バッグ/ママ向け) | ナイロントート |
-| `beauty-hairoil.js` | ビューティー | ヘアオイル |
-| `food-seasoning.js` | 食品 | 万能調味料 |
+| ファイル | 役割 |
+|---------|------|
+| `lib/slidekit.js` | 共通生成エンジン |
+| `generate.js` | エントリポイント |
+| `templates/example.json` | JSON構造の見本 |
 
-新規作成時は最も商材が近いテンプレートをコピーし、内容を差し替える。
+新規作成時は最も商材が近いテンプレートJSONをコピーし、内容を差し替える。
 
 ## KeyMsg 28文字ルール
 
@@ -152,7 +150,7 @@ PowerPointで改行されない長さ。
 
 ## 注意事項
 
-- 既存ファイルを上書きしない。別名(generate-xxx.js)で新規作成
+- 既存ファイルを上書きしない。別名(templates/xxx.json)で新規作成
 - 画像はsipsで実ピクセルを取得しfitImageでアスペクト比維持
 - sizing:coverは使わない
 - SVGの`#`付きカラーコードはPptxGenJS本体で使わない（SVG内は可）

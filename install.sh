@@ -74,9 +74,11 @@ install_file() {
 
 install_file "SKILL.md" "skill/SKILL.md" "$SKILL_DIR/SKILL.md"
 
-# ── 4. 参照スクリプトのインストール（テンプレート例） ──
-# v2（レザーバッグ）を汎用テンプレートとしてインストール
-install_file "generate-template.js" "generate-v2.js" "$PROJECT_DIR/generate-template.js" || true
+# ── 4. コアファイルのインストール ──
+install_file "lib/slidekit.js" "lib/slidekit.js" "$PROJECT_DIR/lib/slidekit.js"
+install_file "generate.js" "generate.js" "$PROJECT_DIR/generate.js"
+mkdir -p "$PROJECT_DIR/templates"
+install_file "templates/example.json" "templates/example.json" "$PROJECT_DIR/templates/example.json"
 
 # ── 5. CLAUDE.md にルールを追記 ──
 PROPOSAL_RULE='インフルエンサーへの商品提案依頼では、Skill「influencer-proposal」を使用すること。リサーチ→商材企画→PPTX生成→Google Slidesアップロードを一気通貫で実行する。'

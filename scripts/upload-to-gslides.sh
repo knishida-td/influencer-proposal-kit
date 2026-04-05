@@ -16,14 +16,32 @@ if [ ! -f "$CLASP_RC" ]; then
   exit 0
 fi
 
-# トークン取得
+# トークン取得（期限切れの場合は自動リフレッシュ）
 ACCESS_TOKEN=$(python3 -c "
-import json
+import json, time, urllib.request, urllib.parse
 with open('$CLASP_RC') as f:
     d = json.load(f)
 tokens = d.get('tokens', d.get('token', {}))
 tok = tokens.get('default', tokens) if isinstance(tokens, dict) and 'default' in tokens else tokens
-print(tok.get('access_token', ''))
+access_token = tok.get('access_token', '')
+expiry_date = tok.get('expiry_date', 0)
+refresh_token = tok.get('refresh_token', '')
+client_id = d.get('oauth2ClientSettings', {}).get('clientId', tok.get('client_id', ''))
+client_secret = d.get('oauth2ClientSettings', {}).get('clientSecret', tok.get('client_secret', ''))
+
+# Check if token is expired
+if expiry_date and expiry_date < time.time() * 1000 and refresh_token and client_id and client_secret:
+    data = urllib.parse.urlencode({
+        'client_id': client_id,
+        'client_secret': client_secret,
+        'refresh_token': refresh_token,
+        'grant_type': 'refresh_token'
+    }).encode()
+    req = urllib.request.Request('https://oauth2.googleapis.com/token', data=data)
+    resp = json.loads(urllib.request.urlopen(req).read())
+    access_token = resp.get('access_token', access_token)
+
+print(access_token)
 " 2>/dev/null)
 
 if [ -z "$ACCESS_TOKEN" ]; then
