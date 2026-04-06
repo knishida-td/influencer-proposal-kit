@@ -25,12 +25,38 @@ if ! command -v node &>/dev/null; then
   echo "  Node.js をインストールしました: $(node -v)"
 fi
 
-# ── 2. Git clone / pull（常に最新を取得） ──
+# ── 2. Git チェック（なければ自動インストール） ──
+if ! command -v git &>/dev/null; then
+  echo "  git が見つかりません。インストールします..."
+  if command -v brew &>/dev/null; then
+    brew install git
+  elif command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get install -y git
+  elif command -v xcode-select &>/dev/null; then
+    xcode-select --install 2>/dev/null || true
+  else
+    echo "  gitを手動インストールしてください: https://git-scm.com/"
+    exit 1
+  fi
+fi
+
+# ── 3. Git clone / pull（常に最新を取得） ──
 if [ -d "$PROJECT_DIR/.git" ]; then
   echo "  リポジトリを最新に更新中..."
   (cd "$PROJECT_DIR" && git pull --ff-only origin main 2>/dev/null) || \
     (cd "$PROJECT_DIR" && git fetch origin && git reset --hard origin/main)
   echo "  最新版に更新しました"
+elif [ -d "$PROJECT_DIR" ]; then
+  # 旧install.shでファイルコピーされた環境 → 一度退避してclone
+  echo "  旧バージョンを検出。git管理に移行します..."
+  mv "$PROJECT_DIR" "${PROJECT_DIR}.bak.$$"
+  git clone "$REPO_URL" "$PROJECT_DIR"
+  # node_modulesは再利用
+  if [ -d "${PROJECT_DIR}.bak.$$/node_modules" ]; then
+    mv "${PROJECT_DIR}.bak.$$/node_modules" "$PROJECT_DIR/node_modules"
+  fi
+  rm -rf "${PROJECT_DIR}.bak.$$"
+  echo "  git管理に移行完了"
 else
   echo "  リポジトリをクローン中..."
   mkdir -p "$(dirname "$PROJECT_DIR")"
@@ -38,7 +64,7 @@ else
   echo "  クローン完了"
 fi
 
-# ── 3. npm依存パッケージ ──
+# ── 4. npm依存パッケージ ──
 if [ ! -d "$PROJECT_DIR/node_modules" ]; then
   echo "  npm install を実行中..."
   (cd "$PROJECT_DIR" && npm install --silent 2>/dev/null)
@@ -47,12 +73,12 @@ else
   echo "  依存パッケージはインストール済みです"
 fi
 
-# ── 4. スキルファイルのシンボリックリンク ──
+# ── 5. スキルファイルのシンボリックリンク ──
 mkdir -p "$SKILL_DIR"
 ln -sf "$PROJECT_DIR/skill/SKILL.md" "$SKILL_DIR/SKILL.md"
 echo "  SKILL.md をリンクしました"
 
-# ── 5. CLAUDE.md にルールを追記 ──
+# ── 6. CLAUDE.md にルールを追記 ──
 PROPOSAL_RULE='インフルエンサーへの商品提案依頼では、Skill「influencer-proposal」を使用すること。リサーチ→商材企画→PPTX生成→Google Slidesアップロードを一気通貫で実行する。'
 
 if [ ! -f "$CLAUDE_MD" ]; then
@@ -65,10 +91,10 @@ else
   echo "  CLAUDE.md にルールは設定済みです"
 fi
 
-# ── 6. アップロードスクリプトの実行権限 ──
+# ── 7. アップロードスクリプトの実行権限 ──
 chmod +x "$PROJECT_DIR/scripts/upload-to-gslides.sh" 2>/dev/null || true
 
-# ── 7. clasp (Google Slides アップロード用) の確認 ──
+# ── 8. clasp (Google Slides アップロード用) の確認 ──
 if command -v clasp &>/dev/null; then
   echo "  clasp はインストール済みです"
 else
@@ -84,7 +110,7 @@ else
   echo "  ※未設定でも提案書の生成自体は可能です"
 fi
 
-# ── 8. pptx MCP サーバーの確認 ──
+# ── 9. pptx MCP サーバーの確認 ──
 SETTINGS_FILE="$HOME/.claude/settings.json"
 if [ -f "$SETTINGS_FILE" ] && grep -q "claude-pptx-mcp\|pptx" "$SETTINGS_FILE" 2>/dev/null; then
   echo "  pptx MCPサーバーは設定済みです"
