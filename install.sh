@@ -75,10 +75,15 @@ install_file() {
 install_file "SKILL.md" "skill/SKILL.md" "$SKILL_DIR/SKILL.md"
 
 # ── 4. コアファイルのインストール ──
+mkdir -p "$PROJECT_DIR/lib" "$PROJECT_DIR/templates" "$PROJECT_DIR/assets" "$PROJECT_DIR/scripts"
 install_file "lib/slidekit.js" "lib/slidekit.js" "$PROJECT_DIR/lib/slidekit.js"
 install_file "generate.js" "generate.js" "$PROJECT_DIR/generate.js"
-mkdir -p "$PROJECT_DIR/templates"
-install_file "templates/example.json" "templates/example.json" "$PROJECT_DIR/templates/example.json"
+install_file "assets/toridori_logo.png" "assets/toridori_logo.png" "$PROJECT_DIR/assets/toridori_logo.png"
+
+# テンプレート（単品+バンドル）
+for tmpl in example.json beauty-bodymist.json beauty-nightcap.json lifestyle-tumbler.json bundle-naruse.json bundle-suzuki.json; do
+  install_file "templates/$tmpl" "templates/$tmpl" "$PROJECT_DIR/templates/$tmpl"
+done
 
 # ── 5. CLAUDE.md にルールを追記 ──
 PROPOSAL_RULE='インフルエンサーへの商品提案依頼では、Skill「influencer-proposal」を使用すること。リサーチ→商材企画→PPTX生成→Google Slidesアップロードを一気通貫で実行する。'
