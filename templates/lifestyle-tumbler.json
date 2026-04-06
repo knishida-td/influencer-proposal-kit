@@ -291,5 +291,7 @@
       ]
     ],
     "keyMsg": "売上想定600万〜3,000万円のポテンシャル"
-  }
+  },
+  "logo": "../assets/toridori_logo.png",
+  "tone": "cool"
 }

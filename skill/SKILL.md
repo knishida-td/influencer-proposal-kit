@@ -91,20 +91,55 @@ description: "インフルエンサー向け商品コラボ提案資料を生成
 | 12 | 販売イメージ | 価格・数量・売上 | 3列(項目/内容/備考) x 8行 |
 | 13 | エンドスライド | クロージング | 中央にタイトル+赤黄ライン |
 
+## トンマナ（tone）
+
+JSONの `tone` フィールドでアクセントカラーを切替可能。インフルエンサーの雰囲気に合わせて選択する。
+
+| tone | カラー | 用途 |
+|------|--------|------|
+| `gold`（デフォルト） | ゴールド | 高級感・万能 |
+| `feminine` | ピンク系 | 女性向け・かわいい系 |
+| `natural` | グリーン系 | ナチュラル・オーガニック |
+| `cool` | ブルー系 | クール・シンプル |
+
+## バンドル生成（複数商品を1資料にまとめる）
+
+`type: "bundle"` のJSONで複数商品テンプレートを1つのPPTXに統合。
+
+```json
+{
+  "type": "bundle",
+  "influencer": "成瀬愛里",
+  "tone": "cool",
+  "logo": "../assets/toridori_logo.png",
+  "output": "/tmp/naruse-bundle.pptx",
+  "products": ["beauty-bodymist.json", "lifestyle-tumbler.json"]
+}
+```
+
+生成されるスライド構成:
+- 共通表紙（インフルエンサー名 + 全商品名）
+- 目次
+- 商品ごとに: セクション区切り + 11枚の商品スライド
+- 共通エンディング
+
+## ロゴ
+
+JSONの `logo` フィールドでロゴ画像を指定すると全ページ右上に自動挿入。
+デフォルトで `assets/toridori_logo.png`（白文字版・ダーク背景対応済み）を使用。
+
 ## SlideKitデザインシステム（固定）
 
 ```javascript
-const C = {
+const BASE_COLORS = {
   bg: "111111", title: "FFFFFF", body: "E0E0E0", sub: "AAAAAA", muted: "666666",
-  primary: "C9A96E", secondary: "E8D5B0", kmBg: "1F1A14", sep: "333333",
-  divider: "333333", white: "FFFFFF",
+  kmBg: "1F1A14", sep: "333333", divider: "333333", white: "FFFFFF", rowAlt: "1A1A1A",
 };
-const FONT = "Hiragino Kaku Gothic Pro W3";
 ```
 
-ダーク背景+ゴールドアクセント。テーブル偶数行は `"1A1A1A"` を使用。
+ダーク背景 + toneで切替可能なアクセントカラー。
 
-全スライド共通ヘルパー: `addHeader`, `addKeyMsg`, `addPageNum`, `centerY`, `addSep`, `addDefBlock`, `addImgFit`
+全スライド共通ヘルパー: `addHeader`, `addKeyMsg`, `addPageNum`, `addLogo`, `centerY`, `addSep`, `addDefBlock`, `addImgFit`
 
 ## SVGバッジ生成
 

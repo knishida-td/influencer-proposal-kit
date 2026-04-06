@@ -1,0 +1,12 @@
+{
+  "type": "bundle",
+  "id": "bundle-suzuki",
+  "influencer": "鈴木亜美",
+  "tone": "feminine",
+  "logo": "../assets/toridori_logo.png",
+  "output": "/tmp/suzuki-bundle.pptx",
+  "products": [
+    "beauty-bodymist.json",
+    "beauty-nightcap.json"
+  ]
+}

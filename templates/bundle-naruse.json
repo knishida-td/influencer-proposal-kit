@@ -1,0 +1,12 @@
+{
+  "type": "bundle",
+  "id": "bundle-naruse",
+  "influencer": "成瀬愛里",
+  "tone": "cool",
+  "logo": "../assets/toridori_logo.png",
+  "output": "/tmp/naruse-bundle.pptx",
+  "products": [
+    "beauty-bodymist.json",
+    "lifestyle-tumbler.json"
+  ]
+}

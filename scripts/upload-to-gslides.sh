@@ -62,6 +62,17 @@ RESPONSE=$(curl -s -X POST \
 
 URL=$(echo "$RESPONSE" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('webViewLink',''))" 2>/dev/null || echo "")
 
+FILE_ID=$(echo "$RESPONSE" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('id',''))" 2>/dev/null || echo "")
+
+# 株式会社トリドリ ドメインに編集権限を付与
+if [ -n "$FILE_ID" ]; then
+  curl -s -X POST \
+    "https://www.googleapis.com/drive/v3/files/$FILE_ID/permissions" \
+    -H "Authorization: Bearer $ACCESS_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d '{"role":"writer","type":"domain","domain":"toridori.co.jp"}' > /dev/null 2>&1
+fi
+
 if [ -n "$URL" ]; then
   echo "完了: $URL"
   open "$URL"
