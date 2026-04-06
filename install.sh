@@ -3,8 +3,8 @@
 # 使い方: curl -fsSL https://raw.githubusercontent.com/knishida-td/influencer-proposal-kit/main/install.sh | bash
 set -euo pipefail
 
-REPO="knishida-td/influencer-proposal-kit"
-REPO_RAW="https://raw.githubusercontent.com/${REPO}/main"
+REPO_URL="https://github.com/knishida-td/influencer-proposal-kit.git"
+PROJECT_DIR="$HOME/Projects/influencer-proposal-kit"
 SKILL_DIR="$HOME/.claude/skills/influencer-proposal"
 CLAUDE_MD="$HOME/.claude/CLAUDE.md"
 
@@ -25,26 +25,20 @@ if ! command -v node &>/dev/null; then
   echo "  Node.js をインストールしました: $(node -v)"
 fi
 
-# ── 2. npm依存パッケージのグローバルインストール確認 ──
-# pptxgenjs と sharp はスクリプト実行時にローカルで使うため、
-# プロジェクトディレクトリにインストールする
-PROJECT_DIR="$HOME/Projects/influencer-proposal-kit"
-mkdir -p "$PROJECT_DIR"
-
-if [ ! -f "$PROJECT_DIR/package.json" ]; then
-  cat > "$PROJECT_DIR/package.json" << 'PKGJSON'
-{
-  "name": "influencer-proposal-kit",
-  "private": true,
-  "dependencies": {
-    "pptxgenjs": "^4.0.1",
-    "sharp": "^0.34.5"
-  }
-}
-PKGJSON
-  echo "  package.json を作成しました"
+# ── 2. Git clone / pull（常に最新を取得） ──
+if [ -d "$PROJECT_DIR/.git" ]; then
+  echo "  リポジトリを最新に更新中..."
+  (cd "$PROJECT_DIR" && git pull --ff-only origin main 2>/dev/null) || \
+    (cd "$PROJECT_DIR" && git fetch origin && git reset --hard origin/main)
+  echo "  最新版に更新しました"
+else
+  echo "  リポジトリをクローン中..."
+  mkdir -p "$(dirname "$PROJECT_DIR")"
+  git clone "$REPO_URL" "$PROJECT_DIR"
+  echo "  クローン完了"
 fi
 
+# ── 3. npm依存パッケージ ──
 if [ ! -d "$PROJECT_DIR/node_modules" ]; then
   echo "  npm install を実行中..."
   (cd "$PROJECT_DIR" && npm install --silent 2>/dev/null)
@@ -53,45 +47,10 @@ else
   echo "  依存パッケージはインストール済みです"
 fi
 
-# ── 3. スキルファイルのインストール ──
+# ── 4. スキルファイルのシンボリックリンク ──
 mkdir -p "$SKILL_DIR"
-
-install_file() {
-  local name="$1"
-  local repo_path="$2"
-  local dest="$3"
-
-  # ローカル実行時（git clone後）
-  local script_dir=""
-  script_dir="$(cd "$(dirname "$0")" 2>/dev/null && pwd)" || true
-  if [ -n "$script_dir" ] && [ -f "$script_dir/$repo_path" ]; then
-    cp "$script_dir/$repo_path" "$dest"
-    echo "  $name をインストールしました（ローカル）"
-    return 0
-  fi
-
-  # curl | bash 時: GitHubからダウンロード
-  if curl -fsSL "$REPO_RAW/$repo_path" -o "$dest" 2>/dev/null; then
-    echo "  $name をインストールしました（GitHub）"
-    return 0
-  fi
-
-  echo "  $name のインストールに失敗しました"
-  return 1
-}
-
-install_file "SKILL.md" "skill/SKILL.md" "$SKILL_DIR/SKILL.md"
-
-# ── 4. コアファイルのインストール ──
-mkdir -p "$PROJECT_DIR/lib" "$PROJECT_DIR/templates" "$PROJECT_DIR/assets" "$PROJECT_DIR/scripts"
-install_file "lib/slidekit.js" "lib/slidekit.js" "$PROJECT_DIR/lib/slidekit.js"
-install_file "generate.js" "generate.js" "$PROJECT_DIR/generate.js"
-install_file "assets/toridori_logo.png" "assets/toridori_logo.png" "$PROJECT_DIR/assets/toridori_logo.png"
-
-# テンプレート（単品+バンドル）
-for tmpl in example.json beauty-bodymist.json beauty-nightcap.json lifestyle-tumbler.json bundle-naruse.json bundle-suzuki.json; do
-  install_file "templates/$tmpl" "templates/$tmpl" "$PROJECT_DIR/templates/$tmpl"
-done
+ln -sf "$PROJECT_DIR/skill/SKILL.md" "$SKILL_DIR/SKILL.md"
+echo "  SKILL.md をリンクしました"
 
 # ── 5. CLAUDE.md にルールを追記 ──
 PROPOSAL_RULE='インフルエンサーへの商品提案依頼では、Skill「influencer-proposal」を使用すること。リサーチ→商材企画→PPTX生成→Google Slidesアップロードを一気通貫で実行する。'
@@ -106,8 +65,7 @@ else
   echo "  CLAUDE.md にルールは設定済みです"
 fi
 
-# ── 6. アップロードスクリプトのインストール ──
-install_file "upload-to-gslides.sh" "scripts/upload-to-gslides.sh" "$PROJECT_DIR/scripts/upload-to-gslides.sh" || true
+# ── 6. アップロードスクリプトの実行権限 ──
 chmod +x "$PROJECT_DIR/scripts/upload-to-gslides.sh" 2>/dev/null || true
 
 # ── 7. clasp (Google Slides アップロード用) の確認 ──
@@ -147,3 +105,6 @@ echo '  「成瀬愛里さんに万能調味料を提案して」'
 echo '  「@xxx にファッション以外で何か提案して」'
 echo ""
 echo "  → リサーチ → 企画 → PPTX生成 → Google Slides で完成します"
+echo ""
+echo "更新方法:"
+echo "  同じコマンドを再実行するだけで最新版に更新されます"
