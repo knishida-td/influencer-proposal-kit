@@ -10,11 +10,19 @@ CLAUDE_MD="$HOME/.claude/CLAUDE.md"
 
 echo "=== influencer-proposal-kit インストール ==="
 
-# ── 1. Node.js チェック ──
+# ── 1. Node.js チェック（なければ自動インストール） ──
 if ! command -v node &>/dev/null; then
-  echo "  Node.js が見つかりません。先にインストールしてください:"
-  echo "  https://nodejs.org/"
-  exit 1
+  echo "  Node.js が見つかりません。インストールします..."
+  if command -v brew &>/dev/null; then
+    brew install node
+  elif command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get install -y nodejs npm
+  else
+    echo "  Homebrewもapt-getもありません。Node.jsを手動インストールしてください:"
+    echo "  https://nodejs.org/"
+    exit 1
+  fi
+  echo "  Node.js をインストールしました: $(node -v)"
 fi
 
 # ── 2. npm依存パッケージのグローバルインストール確認 ──
