@@ -64,14 +64,10 @@ else
   echo "  クローン完了"
 fi
 
-# ── 4. npm依存パッケージ ──
-if [ ! -d "$PROJECT_DIR/node_modules" ]; then
-  echo "  npm install を実行中..."
-  (cd "$PROJECT_DIR" && npm install --silent 2>/dev/null)
-  echo "  依存パッケージをインストールしました"
-else
-  echo "  依存パッケージはインストール済みです"
-fi
+# ── 4. npm依存パッケージ（常に同期） ──
+echo "  依存パッケージを確認中..."
+(cd "$PROJECT_DIR" && npm install --silent 2>/dev/null)
+echo "  依存パッケージOK"
 
 # ── 5. スキルファイルのシンボリックリンク ──
 mkdir -p "$SKILL_DIR"
